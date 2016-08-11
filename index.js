@@ -22,7 +22,7 @@ function getApp (log) {
   basicAuth.init();
 
   if (log) {
-    loginApp.use(httpHelper.requestLogger('login'));
+    loginRouter.use(httpHelper.requestLogger('login'));
   }
 
   // Register all routes
