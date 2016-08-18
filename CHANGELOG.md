@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0
+
+* Add google connect route
+* Add Facebook connect route
+
+*guedj_m, Thu Aug 18 2016 14:39:48 GMT+0200 (CEST)*
+
+---
 ## 0.1.0
 
 * Version ready for spred use

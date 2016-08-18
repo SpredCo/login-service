@@ -1,5 +1,14 @@
 [
   {
+    "version": "0.2.0",
+    "author": "guedj_m",
+    "date": "Thu Aug 18 2016 14:39:48 GMT+0200 (CEST)",
+    "changes": [
+      "Add google connect route",
+      "Add Facebook connect route"
+    ]
+  },
+  {
     "version": "0.1.0",
     "author": "guedj_m",
     "date": "Thu Aug 11 2016 16:13:09 GMT+0200 (CEST)",
