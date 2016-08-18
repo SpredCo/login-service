@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const httpHelper = require('spred-http-helper');
 
 const userRoute = require('./route/user');
+const oauth2Route = require('./route/oauth2');
 
 var loginApp = null;
 var loginRouter = null;
@@ -25,8 +26,11 @@ function getApp (log) {
     loginRouter.use(httpHelper.requestLogger('login'));
   }
 
+  loginRouter.use(passport.authenticate('basic', {session: false}));
+
   // Register all routes
   userRoute.registerRoute(loginRouter);
+  oauth2Route.registerRoute(loginRouter);
 
   loginApp.use('/v1', loginRouter);
   loginApp.use('/doc', express.static(path.join(__dirname, '/doc'), {dotfiles: 'allow'}));
