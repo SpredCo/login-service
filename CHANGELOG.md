@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+* Minor bug fix
+
+*guedj_m, Thu Aug 18 2016 14:50:05 GMT+0200 (CEST)*
+
+---
 ## 0.2.0
 
 * Add google connect route
