@@ -82,6 +82,56 @@ api:
           errors:
             - Invalid request
             - User exists
+    -
+      /v1/oauth2/google-connect:
+        post:
+          summary: Get an access token with google authentication
+          description: |
+            This route generate accesses from a google access token. If the user does not exist, it create it.;;;
+            /!\ The google access token requires the google scopes: `"https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email"`
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              access_token:
+                description: The google access token
+                in: body
+                type: string
+                required: true
+          responses:
+            -
+              200:
+                description: Access granted
+                type: Access
+          errors:
+            - Invalid request
+            - Invalid google token
+            - User exists
+    -
+      /v1/oauth2/facebook-connect:
+        post:
+          summary: Get an access token with facebook authentication
+          description: |
+            This route generate accesses from a facebook access token. If the user does not exist, it create it.;;;
+            /!\ The facebook access token requires the facebook scope: `"email"`
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              access_token:
+                description: The facebook access token
+                in: body
+                type: string
+                required: true
+          responses:
+            -
+              200:
+                description: Access granted
+                type: Access
+          errors:
+            - Invalid request
+            - Invalid facebook token
+            - User exists
 
   errors:
     -
@@ -91,11 +141,24 @@ api:
         message: Invalid request
         fix: Check the request parameters twice
     -
+      Invalid Google token:
+        status: 400
+        code: 2
+        subcode: 1
+        message: Invalid google token
+    -
+      Invalid Facebook token:
+        status: 400
+        code: 2
+        subcode: 2
+        message: Invalid facebook token
+    -
       User exists:
         status: 403
         code: 2
         subcode: 1
         message: User exists (email address already in use)
+
 
   objects:
     -
@@ -120,3 +183,12 @@ api:
           first_name: ""
           last_name: ""
           picture_url: ""
+    -
+      Access:
+        description: Access object
+        obj:
+          access_token: ""
+          refresh_token: ""
+          expires_in: 3600
+          token_type: "Bearer"
+          new_user: true
