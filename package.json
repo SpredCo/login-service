@@ -53,6 +53,7 @@
     "auth/",
     "doc/",
     "route/",
+    "service/",
     "index.js"
   ]
 }
