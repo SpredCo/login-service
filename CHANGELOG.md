@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+
+* Add oauth2 authentication
+
+*guedj_m, Tue Aug 23 2016 13:18:35 GMT+0200 (CEST)*
+
+---
 ## 0.2.1
 
 * Minor bug fix

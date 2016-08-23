@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.3.0",
+    "author": "guedj_m",
+    "date": "Tue Aug 23 2016 13:18:35 GMT+0200 (CEST)",
+    "changes": [
+      "Add oauth2 authentication"
+    ]
+  },
+  {
     "version": "0.2.1",
     "author": "guedj_m",
     "date": "Thu Aug 18 2016 14:50:05 GMT+0200 (CEST)",
