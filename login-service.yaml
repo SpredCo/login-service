@@ -83,6 +83,51 @@ api:
             - Invalid request
             - User exists
     -
+      /v1/oauth2/token:
+        post:
+          summary: Get an access token
+          description: This endpoint implements the OAuth2 exchange. Two grants are implemented: **password** (get token from user email and password) and **refresh_token** (get a new token from a refresh_token)
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              grant_type:
+                description: Grant type, can be *password* (*email* and *password* fields will be required) or *refresh_token* (*refresh_token* field will be required)
+                in: body
+                type: string
+                required: true
+            -
+              username:
+                description: User email (required for *password* grant)
+                in: body
+                type: string
+                required: false
+            -
+              password:
+                description: User password (required for *password* grant)
+                in: body
+                type: string
+                required: false
+            -
+              refresh_token:
+                description: A refresh token (required for *refresh_token* grant)
+                in: body
+                type: string
+                required: false
+          responses:
+            -
+              200:
+                description: Access granted
+                type: Access
+            -
+              403:
+                description: Invalid grant (something went wrong with supplied params, check error message)
+                type: Short Error
+            -
+              400:
+                description: Invalid request (missing parameter)
+                type: Short Error
+    -
       /v1/oauth2/google-connect:
         post:
           summary: Get an access token with google authentication

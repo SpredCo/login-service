@@ -1,6 +1,6 @@
 const config = require('config');
-// const passport = require('passport');
-// const oauth2 = require('../auth/oauth');
+const passport = require('passport');
+const oauth2 = require('../auth/oauth');
 const common = require('spred-common');
 const httpHelper = require('spred-http-helper');
 
@@ -8,6 +8,7 @@ const google = require('googleapis');
 const facebook = require('../service/facebookApi');
 
 function registerRoute (router) {
+  router.post('/oauth2/token', passport.authenticate('basic', { session: false }), oauth2.token);
   router.post('/oauth2/google-connect', googleConnect);
   router.post('/oauth2/facebook-connect', facebookConnect);
 }
