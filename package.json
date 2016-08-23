@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpredCo/login-service.git"
+    "url": "git+https://github.com/spredco/login-service.git"
   },
   "author": "Maxime Guedj",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SpredCo/login-service/issues"
+    "url": "https://github.com/spredco/login-service/issues"
   },
-  "homepage": "https://github.com/SpredCo/login-service#readme",
+  "homepage": "https://github.com/spredco/login-service#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -28,8 +28,8 @@
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "request": "^2.74.0",
-    "spred-common": "git+ssh://git@github.com/SpredCo/common.git",
-    "spred-http-helper": "git+ssh://git@github.com/SpredCo/http-helper.git"
+    "spred-common": "git+ssh://git@github.com/spredco/common.git",
+    "spred-http-helper": "git+ssh://git@github.com/spredco/http-helper.git"
   },
   "devDependencies": {
     "api-doc-generator": "git+ssh://git@github.com/guedjm/api-doc-generator.git",
