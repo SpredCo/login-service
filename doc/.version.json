@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.4.0",
+    "author": "guedj_m",
+    "date": "Mon Sep 05 2016 17:35:38 GMT+0200 (CEST)",
+    "changes": [
+      "Add pseudo to user",
+      "Add route /v1/users/pseudo/check to check if a pseudo is used",
+      "Add route /v1/users/facebook for user registration with facebook",
+      "Add route /v1/users/google for user registration with google",
+      "Route /v1/oauth2/facebook-connect no longer create user if it doesn't exist",
+      "Route /v1/oauth2/google-connect no longer create user if it doesn't exist"
+    ]
+  },
+  {
     "version": "0.3.0",
     "author": "guedj_m",
     "date": "Tue Aug 23 2016 13:18:35 GMT+0200 (CEST)",
