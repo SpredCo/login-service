@@ -3,5 +3,8 @@
     "name": "FacebookConnect",
     "key": "FacebookConnectKey",
     "secret": "FacebookConnectSecret"
+  },
+  "fbUser": {
+    "pseudo": "fbUserPseudo"
   }
 }

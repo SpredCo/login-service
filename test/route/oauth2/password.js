@@ -18,6 +18,7 @@ describe('Testing OAuth2 password grant (POST /v1/oauth2/token)', function () {
         } else {
           common.userModel.createPassword(fixture.user.email,
             fixture.user.password,
+            fixture.user.pseudo,
             fixture.user.first_name,
             fixture.user.last_name,
             function (err) {

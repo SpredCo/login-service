@@ -33,19 +33,7 @@ function googleConnect (req, res, next) {
           if (err) {
             next(err);
           } else if (fUser == null) {
-            common.userModel.createGoogle(
-              userInfo['email'],
-              userInfo['id'],
-              userInfo['given_name'],
-              userInfo['family_name'],
-              userInfo['picture'] + '?sz=50',
-              function (err, cUser) {
-                if (err) {
-                  next(err);
-                } else {
-                  sendTokens(res, req.user, cUser, true, next);
-                }
-              });
+            httpHelper.sendReply(res, httpHelper.error.userNotFound());
           } else if (fUser.googleId !== userInfo['id']) {
             httpHelper.sendReply(req, httpHelper.error.userExist());
           } else {
@@ -71,20 +59,7 @@ function facebookConnect (req, res, next) {
           if (err) {
             next(err);
           } else if (fUser == null) {
-            common.userModel.createFacebook(
-              userInfo.email,
-              userInfo.id,
-              userInfo.first_name,
-              userInfo.last_name,
-              userInfo.picture.data.url,
-              function (err, cUser) {
-                if (err) {
-                  next(err);
-                } else {
-                  sendTokens(res, req.user, cUser, true, next);
-                }
-              }
-            );
+            httpHelper.sendReply(res, httpHelper.error.userNotFound());
           } else if (fUser.facebookId !== userInfo.id) {
             httpHelper.sendReply(res, httpHelper.error.userExist());
           } else {

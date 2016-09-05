@@ -44,6 +44,30 @@ api:
 
   routes:
     -
+      /v1/users/pseudo/check:
+        post:
+          summary: Check if a pseudo is used
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              pseudo:
+                description: The pseudo to check
+                in: body
+                type: string
+                required: true
+          responses:
+            -
+              200:
+                description: Pseudo available
+                type: string
+            -
+              403:
+                description: Pseudo used
+                type: Error
+          errors:
+            - Invalid request
+    -
       /v1/users:
         post:
           summary: Create a new user
@@ -59,6 +83,12 @@ api:
             -
               password:
                 description: User password
+                in: body
+                type: string
+                required: true
+            -
+              pseudo:
+                description: User pseudo (should be unique)
                 in: body
                 type: string
                 required: true
@@ -82,6 +112,71 @@ api:
           errors:
             - Invalid request
             - User exists
+            - Pseudo exists
+    -
+      /v1/users/facebook:
+        post:
+          summary: Create a new user from facebook
+          description: |
+            This route create an user from a facebook access token.;;;
+            /!\ The facebook access token requires the facebook scope: `"email"`
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              access_token:
+                description: Facebook access token
+                in: body
+                type: string
+                required: true
+            -
+              pseudo:
+                description: User pseudo (should be unique)
+                in: body
+                type: string
+                required: true
+          responses:
+            -
+              201:
+                description: User created
+                type: User
+          errors:
+            - Invalid request
+            - Invalid facebook token
+            - User exists
+            - Pseudo exists
+    -
+      /v1/users/google:
+        post:
+          summary: Register a new user from google information
+          description: |
+            This route creates user from a google access token.;;;
+            /!\ The google access token requires the google scopes: `"https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email"`
+          tags:
+            - Basic auth
+          parameters:
+            -
+              access_token:
+                description: Google access token
+                in: body
+                type: string
+                required: true
+            -
+              pseudo:
+                description: User pseudo (should be unique)
+                in: body
+                type: string
+                required: true
+          responses:
+            -
+              201:
+                description: User created
+                type: User
+          errors:
+            - Invalid request
+            - Invalid google token
+            - User exists
+            - Pseudo exists
     -
       /v1/oauth2/token:
         post:
@@ -132,7 +227,7 @@ api:
         post:
           summary: Get an access token with google authentication
           description: |
-            This route generate accesses from a google access token. If the user does not exist, it create it.;;;
+            This route generate accesses from a google access token. User should be registred.;;;
             /!\ The google access token requires the google scopes: `"https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email"`
           tags:
             - Basic Auth
@@ -157,7 +252,7 @@ api:
         post:
           summary: Get an access token with facebook authentication
           description: |
-            This route generate accesses from a facebook access token. If the user does not exist, it create it.;;;
+            This route generate accesses from a facebook access token. User should be registred.;;;
             /!\ The facebook access token requires the facebook scope: `"email"`
           tags:
             - Basic Auth
@@ -203,6 +298,12 @@ api:
         code: 2
         subcode: 1
         message: User exists (email address already in use)
+    -
+      Pseudo exists:
+        status: 403
+        code: 2
+        subcode: 2
+        message: User exists (pseudo already in use)
 
 
   objects:
@@ -225,9 +326,12 @@ api:
         obj:
           id: ""
           email: ""
+          pseudo: ""
           first_name: ""
           last_name: ""
           picture_url: ""
+          following:
+            - User
     -
       Access:
         description: Access object
@@ -236,4 +340,3 @@ api:
           refresh_token: ""
           expires_in: 3600
           token_type: "Bearer"
-          new_user: true

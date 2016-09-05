@@ -50,7 +50,7 @@ server.exchange(oauth2orize.exchange.refreshToken(function (client, refreshToken
                 if (err) {
                   done(err);
                 } else {
-                  return done(null, cAccessToken.token, cRefreshToken.token, { expires_in: cAccessToken.duration, new_user: false });
+                  return done(null, cAccessToken.token, cRefreshToken.token, { expires_in: cAccessToken.duration });
                 }
               });
             }

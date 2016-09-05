@@ -3,5 +3,8 @@
     "name": "GoogleConnect",
     "key": "GoogleConnectKey",
     "secret": "GoogleConnectSecret"
+  },
+  "googleUser": {
+    "pseudo": "googleUserPseudo"
   }
 }

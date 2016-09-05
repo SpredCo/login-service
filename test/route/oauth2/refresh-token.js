@@ -18,6 +18,7 @@ describe('Testing OAuth2 refresh_token grant (POST /v1/oauth2/token)', function 
         } else {
           common.userModel.createPassword(fixture.user.email,
             fixture.user.password,
+            fixture.user.pseudo,
             fixture.user.first_name,
             fixture.user.last_name,
             function (err, cUser) {
@@ -51,7 +52,6 @@ describe('Testing OAuth2 refresh_token grant (POST /v1/oauth2/token)', function 
           expect(res.body.access_token).to.not.be.undefined;
           expect(res.body.refresh_token).to.not.be.undefined;
           expect(res.body.expires_in).to.equal(3600);
-          expect(res.body.new_user).to.be.false;
           expect(res.body.token_type).to.equal('Bearer');
           done();
         }

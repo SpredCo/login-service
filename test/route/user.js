@@ -108,4 +108,60 @@ describe('Testing user creation (POST /v1/users)', function () {
         }
       });
   });
+
+  it('Should return an error when same pseudo', function (done) {
+    loginSrv
+      .post('/v1/users')
+      .send(fixture.user3)
+      .set('Content-Type', 'application/json')
+      .auth(fixture.client.key, fixture.client.secret)
+      .expect(403)
+      .end(function (err, res) {
+        if (err) {
+          done(err);
+        } else {
+          expect(res.body.code).to.equal(2);
+          expect(res.body.sub_code).to.equal(2);
+          expect(res.body.message).to.equal('User exists (pseudo already in use)');
+          done();
+        }
+      });
+  });
+});
+
+describe('Testing pseudo check (POST /v1/users/pseudo/check)', function () {
+  it('Should reply a 200 with a unused pseudo', function (done) {
+    loginSrv
+      .post('/v1/users/pseudo/check')
+      .send({ pseudo: fixture.unusedPseudo })
+      .set('Content-Type', 'application/json')
+      .auth(fixture.client.key, fixture.client.secret)
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          done(err);
+        } else {
+          done();
+        }
+      });
+  });
+
+  it('Should reply a 403 with a used pseudo', function (done) {
+    loginSrv
+      .post('/v1/users/pseudo/check')
+      .send({ pseudo: fixture.user1.pseudo })
+      .set('Content-Type', 'application/json')
+      .auth(fixture.client.key, fixture.client.secret)
+      .expect(403)
+      .end(function (err, res) {
+        if (err) {
+          done(err);
+        } else {
+          expect(res.body.code).to.equal(2);
+          expect(res.body.sub_code).to.equal(2);
+          expect(res.body.message).to.equal('User exists (pseudo already in use)');
+          done();
+        }
+      });
+  });
 });
