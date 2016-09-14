@@ -1,8 +1,7 @@
-const config = require('config');
 const httpHelper = require('spred-http-helper');
 const userModel = require('spred-common').userModel;
 
-const google = require('googleapis');
+const google = require('../service/googleAPI');
 const facebook = require('../service/facebookApi');
 
 function registerRoute (router) {
@@ -99,19 +98,11 @@ function createGoogleUser (req, res, next) {
   if (req.body.access_token === undefined || req.body.pseudo === undefined) {
     httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
   } else {
-    const oauth2Service = google.oauth2({version: 'v2'});
-
-    const OAuth2 = google.auth.OAuth2;
-    const oauth2Client = new OAuth2();
-    oauth2Client.setCredentials({
-      access_token: req.body.access_token
-    });
-
-    oauth2Service.userinfo.v2.me.get({auth: oauth2Client, key: config.get('googleApiKey')}, function (err, userInfo) {
+    google.getUserInformation(req.body.access_token, function (err, info) {
       if (err) {
         httpHelper.sendReply(res, httpHelper.error.invalidGoogleToken());
       } else {
-        userModel.getByEmail(userInfo['email'], function (err, fUser) {
+        userModel.getByEmail(info['email'], function (err, fUser) {
           if (err) {
             next(err);
           } else if (fUser != null) {
@@ -124,12 +115,12 @@ function createGoogleUser (req, res, next) {
                 httpHelper.sendReply(res, httpHelper.error.pseudoExist());
               } else {
                 userModel.createGoogle(
-                  userInfo['email'],
-                  userInfo['id'],
+                  info['email'],
+                  info['id'],
                   req.body.pseudo,
-                  userInfo['given_name'],
-                  userInfo['family_name'],
-                  userInfo['picture'] + '?sz=50',
+                  info['given_name'],
+                  info['family_name'],
+                  info['picture'] + '?sz=50',
                   function (err, cUser) {
                     if (err) {
                       next(err);

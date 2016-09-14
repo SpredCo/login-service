@@ -1,10 +1,9 @@
-const config = require('config');
-const passport = require('passport');
 const oauth2 = require('../auth/oauth');
+const passport = require('passport');
 const common = require('spred-common');
 const httpHelper = require('spred-http-helper');
 
-const google = require('googleapis');
+const google = require('../service/googleAPI');
 const facebook = require('../service/facebookApi');
 
 function registerRoute (router) {
@@ -17,15 +16,7 @@ function googleConnect (req, res, next) {
   if (req.body.access_token === undefined) {
     httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
   } else {
-    const oauth2Service = google.oauth2({version: 'v2'});
-
-    const OAuth2 = google.auth.OAuth2;
-    const oauth2Client = new OAuth2();
-    oauth2Client.setCredentials({
-      access_token: req.body.access_token
-    });
-
-    oauth2Service.userinfo.v2.me.get({auth: oauth2Client, key: config.get('googleApiKey')}, function (err, userInfo) {
+    google.getUserInformation(req.body.access_token, function (err, userInfo) {
       if (err) {
         httpHelper.sendReply(res, httpHelper.error.invalidGoogleToken());
       } else {
