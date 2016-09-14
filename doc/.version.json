@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.5.1",
+    "author": "guedj_m",
+    "date": "Wed Sep 14 2016 11:14:45 GMT-0700 (PDT)",
+    "changes": [
+      "Check are now in GET methods"
+    ]
+  },
+  {
     "version": "0.5.0",
     "author": "guedj_m",
     "date": "Wed Sep 14 2016 15:18:48 GMT+0200 (CEST)",

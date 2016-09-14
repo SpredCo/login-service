@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1
+
+* Check are now in GET methods
+
+*guedj_m, Wed Sep 14 2016 11:14:45 GMT-0700 (PDT)*
+
+---
 ## 0.5.0
 
 * Add route to check if an email is already used by an user
