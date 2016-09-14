@@ -129,11 +129,10 @@ describe('Testing user creation (POST /v1/users)', function () {
   });
 });
 
-describe('Testing pseudo check (POST /v1/users/pseudo/check)', function () {
+describe('Testing pseudo check (GET /v1/users/pseudo/check/:pseudo)', function () {
   it('Should reply a 200 with a unused pseudo', function (done) {
     loginSrv
-      .post('/v1/users/pseudo/check')
-      .send({ pseudo: fixture.unusedPseudo })
+      .get('/v1/users/pseudo/check/' + fixture.unusedPseudo)
       .set('Content-Type', 'application/json')
       .auth(fixture.client.key, fixture.client.secret)
       .expect(200)
@@ -148,8 +147,7 @@ describe('Testing pseudo check (POST /v1/users/pseudo/check)', function () {
 
   it('Should reply a 403 with a used pseudo', function (done) {
     loginSrv
-      .post('/v1/users/pseudo/check')
-      .send({ pseudo: fixture.user1.pseudo })
+      .get('/v1/users/pseudo/check/' + fixture.user1.pseudo)
       .set('Content-Type', 'application/json')
       .auth(fixture.client.key, fixture.client.secret)
       .expect(403)
@@ -166,11 +164,10 @@ describe('Testing pseudo check (POST /v1/users/pseudo/check)', function () {
   });
 });
 
-describe('Testing email check (POST /v1/users/email/check)', function () {
+describe('Testing email check (GET /v1/users/email/check/:email)', function () {
   it('Should reply 200 if email is not user', function (done) {
     loginSrv
-      .post('/v1/users/email/check')
-      .send({ email: fixture.unusedEmail })
+      .get('/v1/users/email/check/' + fixture.unusedEmail)
       .set('Content-Type', 'application/json')
       .auth(fixture.client.key, fixture.client.secret)
       .expect(200)
@@ -185,8 +182,7 @@ describe('Testing email check (POST /v1/users/email/check)', function () {
 
   it('Should reply an error if email address is already user', function (done) {
     loginSrv
-      .post('/v1/users/email/check')
-      .send({ email: fixture.user1.email })
+      .get('/v1/users/email/check/' + fixture.user1.email)
       .set('Content-Type', 'application/json')
       .auth(fixture.client.key, fixture.client.secret)
       .expect(403)

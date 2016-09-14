@@ -44,18 +44,11 @@ api:
 
   routes:
     -
-      /v1/users/pseudo/check:
-        post:
+      /v1/users/pseudo/check/{pseudo}:
+        get:
           summary: Check if a pseudo is used
           tags:
             - Basic Auth
-          parameters:
-            -
-              pseudo:
-                description: The pseudo to check
-                in: body
-                type: string
-                required: true
           responses:
             -
               200:
@@ -68,18 +61,11 @@ api:
           errors:
             - Invalid request
     -
-      /v1/users/email/check:
-        post:
+      /v1/users/email/check/{email}:
+        get:
           summary: Check if an email addresss is already used
           tags:
             - Basic Auth
-          parameters:
-            -
-              email:
-                description: The email to check
-                in: body
-                type: string
-                required: true
           responses:
             -
               200:

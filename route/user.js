@@ -8,8 +8,8 @@ function registerRoute (router) {
   router.post('/users', createUser);
   router.post('/users/facebook', createFbUser);
   router.post('/users/google', createGoogleUser);
-  router.post('/users/pseudo/check', checkPseudo);
-  router.post('/users/email/check', checkEmail);
+  router.get('/users/pseudo/check/:pseudo', checkPseudo);
+  router.get('/users/email/check/:email', checkEmail);
 }
 
 function createUser (req, res, next) {
@@ -138,35 +138,27 @@ function createGoogleUser (req, res, next) {
 }
 
 function checkPseudo (req, res, next) {
-  if (req.body.pseudo === undefined) {
-    httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
-  } else {
-    userModel.getByPseudo(req.body.pseudo, function (err, fUser) {
-      if (err) {
-        next(err);
-      } else if (fUser == null) {
-        httpHelper.sendReply(res, 200, {});
-      } else {
-        httpHelper.sendReply(res, httpHelper.error.pseudoExist());
-      }
-    });
-  }
+  userModel.getByPseudo(req.params.pseudo, function (err, fUser) {
+    if (err) {
+      next(err);
+    } else if (fUser == null) {
+      httpHelper.sendReply(res, 200, {});
+    } else {
+      httpHelper.sendReply(res, httpHelper.error.pseudoExist());
+    }
+  });
 }
 
 function checkEmail (req, res, next) {
-  if (req.body.email === undefined) {
-    httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
-  } else {
-    userModel.getByEmail(req.body.email, function (err, fUser) {
-      if (err) {
-        next(err);
-      } else if (fUser == null) {
-        httpHelper.sendReply(res, 200, {});
-      } else {
-        httpHelper.sendReply(res, httpHelper.error.userExist());
-      }
-    });
-  }
+  userModel.getByEmail(req.params.email, function (err, fUser) {
+    if (err) {
+      next(err);
+    } else if (fUser == null) {
+      httpHelper.sendReply(res, 200, {});
+    } else {
+      httpHelper.sendReply(res, httpHelper.error.userExist());
+    }
+  });
 }
 
 module.exports.registerRoute = registerRoute;
