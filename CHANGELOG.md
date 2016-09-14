@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0
+
+* Add route to check if an email is already used by an user
+* Fix issue with google login
+
+*guedj_m, Wed Sep 14 2016 15:18:48 GMT+0200 (CEST)*
+
+---
 ## 0.4.0
 
 * Add pseudo to user

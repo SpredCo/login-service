@@ -1,5 +1,14 @@
 [
   {
+    "version": "0.5.0",
+    "author": "guedj_m",
+    "date": "Wed Sep 14 2016 15:18:48 GMT+0200 (CEST)",
+    "changes": [
+      "Add route to check if an email is already used by an user",
+      "Fix issue with google login"
+    ]
+  },
+  {
     "version": "0.4.0",
     "author": "guedj_m",
     "date": "Mon Sep 05 2016 17:35:38 GMT+0200 (CEST)",
