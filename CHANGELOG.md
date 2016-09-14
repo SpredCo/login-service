@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.2
+
+* Fix little issue on google connect
+
+*guedj_m, Wed Sep 14 2016 13:58:23 GMT-0700 (PDT)*
+
+---
 ## 0.5.1
 
 * Check are now in GET methods
