@@ -26,7 +26,7 @@ function googleConnect (req, res, next) {
           } else if (fUser == null) {
             httpHelper.sendReply(res, httpHelper.error.userNotFound());
           } else if (fUser.googleId !== userInfo['id']) {
-            httpHelper.sendReply(req, httpHelper.error.userExist());
+            httpHelper.sendReply(res, httpHelper.error.userExist());
           } else {
             sendTokens(res, req.user, fUser, false, next);
           }
