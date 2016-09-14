@@ -165,3 +165,40 @@ describe('Testing pseudo check (POST /v1/users/pseudo/check)', function () {
       });
   });
 });
+
+describe('Testing email check (POST /v1/users/email/check)', function () {
+  it('Should reply 200 if email is not user', function (done) {
+    loginSrv
+      .post('/v1/users/email/check')
+      .send({ email: fixture.unusedEmail })
+      .set('Content-Type', 'application/json')
+      .auth(fixture.client.key, fixture.client.secret)
+      .expect(200)
+      .end(function (err, res) {
+        if (err) {
+          done(err);
+        } else {
+          done();
+        }
+      });
+  });
+
+  it('Should reply an error if email address is already user', function (done) {
+    loginSrv
+      .post('/v1/users/email/check')
+      .send({ email: fixture.user1.email })
+      .set('Content-Type', 'application/json')
+      .auth(fixture.client.key, fixture.client.secret)
+      .expect(403)
+      .end(function (err, res) {
+        if (err) {
+          done(err);
+        } else {
+          expect(res.body.code).to.equal(2);
+          expect(res.body.sub_code).to.equal(1);
+          expect(res.body.message).to.equal('User exists (email address already in use)');
+          done();
+        }
+      });
+  });
+});

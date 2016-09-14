@@ -68,6 +68,30 @@ api:
           errors:
             - Invalid request
     -
+      /v1/users/email/check:
+        post:
+          summary: Check if an email addresss is already used
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              email:
+                description: The email to check
+                in: body
+                type: string
+                required: true
+          responses:
+            -
+              200:
+                description: Email address available
+                type: string
+            -
+              403:
+                description: Email address used
+                type: error
+          errors:
+            - Invalid request
+    -
       /v1/users:
         post:
           summary: Create a new user

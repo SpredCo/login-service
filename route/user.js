@@ -10,6 +10,7 @@ function registerRoute (router) {
   router.post('/users/facebook', createFbUser);
   router.post('/users/google', createGoogleUser);
   router.post('/users/pseudo/check', checkPseudo);
+  router.post('/users/email/check', checkEmail);
 }
 
 function createUser (req, res, next) {
@@ -156,6 +157,22 @@ function checkPseudo (req, res, next) {
         httpHelper.sendReply(res, 200, {});
       } else {
         httpHelper.sendReply(res, httpHelper.error.pseudoExist());
+      }
+    });
+  }
+}
+
+function checkEmail (req, res, next) {
+  if (req.body.email === undefined) {
+    httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
+  } else {
+    userModel.getByEmail(req.body.email, function (err, fUser) {
+      if (err) {
+        next(err);
+      } else if (fUser == null) {
+        httpHelper.sendReply(res, 200, {});
+      } else {
+        httpHelper.sendReply(res, httpHelper.error.userExist());
       }
     });
   }

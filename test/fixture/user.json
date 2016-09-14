@@ -24,5 +24,6 @@
     "first_name": "Maxime",
     "last_name": "Guedj"
   },
-  "unusedPseudo": "Ahahaha"
+  "unusedPseudo": "Ahahaha",
+  "unusedEmail": "unused@test.com"
 }
