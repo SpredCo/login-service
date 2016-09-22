@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0
+
+* Update check route to /v1/users/check/...
+* Add check google token route (/v1/users/check/google-token/)
+* Add check facebook token route (/v1/users/check/facebook-token/)
+* Fix documentation
+
+*guedj_m, Thu Sep 22 2016 11:45:43 GMT+0200 (CEST)*
+
+---
 ## 0.5.2
 
 * Fix little issue on google connect

@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.6.0",
+    "author": "guedj_m",
+    "date": "Thu Sep 22 2016 11:45:43 GMT+0200 (CEST)",
+    "changes": [
+      "Update check route to /v1/users/check/...",
+      "Add check google token route (/v1/users/check/google-token/)",
+      "Add check facebook token route (/v1/users/check/facebook-token/)",
+      "Fix documentation"
+    ]
+  },
+  {
     "version": "0.5.2",
     "author": "guedj_m",
     "date": "Wed Sep 14 2016 13:58:23 GMT-0700 (PDT)",
