@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.1
+
+* Update documentation
+
+*guedj_m, Fri Nov 04 2016 18:49:33 GMT+0100 (CET)*
+
+---
 ## 0.7.0
 
 * Integrate spredcast token creation

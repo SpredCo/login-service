@@ -1,6 +1,6 @@
 {
   "name": "spred-login-service",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Spred login service",
   "main": "index.js",
   "scripts": {
