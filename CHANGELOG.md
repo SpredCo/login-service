@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0
+
+* Integrate spredcast token creation
+* Fix issue with user creation fb and google
+
+*guedj_m, Fri Nov 04 2016 18:38:52 GMT+0100 (CET)*
+
+---
 ## 0.6.0
 
 * Update check route to /v1/users/check/...
