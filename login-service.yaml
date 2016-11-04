@@ -312,6 +312,29 @@ api:
             - Invalid facebook token
             - User not found
             - User exists
+    -
+      /v1/spredcast/{id}/token:
+        post:
+          summary: Get a cast token for the cast
+          tags:
+            - Basic Auth
+          parameters:
+            -
+              presenter:
+                description: Presenter mode (as boolean)
+                type: string
+                in: body
+                required: true
+          responses:
+            -
+              201:
+                description: Token created
+                type: Cast token
+          errors:
+            - Invalid request
+            - Cast not found
+            - Authorization refused
+
 
   errors:
     -
@@ -345,11 +368,24 @@ api:
         subcode: 2
         message: User exists (pseudo already in use)
     -
+      Authorization refused:
+        status: 403
+        code: 5
+        subcode: 1
+        message: Authorization refused
+    -
       User not found:
         status: 404
         code: 2
         subcode: 1
         message: Unable to find user
+    -
+      Cast not found:
+        status: 404
+        code: 5
+        subcode: 1
+        message: Unable to find cast
+
 
 
   objects:
@@ -386,3 +422,12 @@ api:
           refresh_token: ""
           expires_in: 3600
           token_type: "Bearer"
+    -
+      Cast token:
+        description: Cast token object
+        obj:
+          -
+            cast_token: ""
+            spredcast: "id"
+            presenter: true
+            pseudo: ""
