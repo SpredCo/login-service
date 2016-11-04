@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0
+
+* Integrate spredcast token
+* Fix issue when create user from facebook or google
+
+*guedj_m, Fri Nov 04 2016 18:29:03 GMT+0100 (CET)*
+
+---
 ## 0.5.2
 
 * Fix little issue on google connect
