@@ -8,6 +8,7 @@ const httpHelper = require('spred-http-helper');
 
 const userRoute = require('./route/user');
 const oauth2Route = require('./route/oauth2');
+const spredcastRoute = require('./route/spredcast');
 
 var loginApp = null;
 var loginRouter = null;
@@ -31,6 +32,7 @@ function getApp (log) {
   // Register all routes
   userRoute.registerRoute(loginRouter);
   oauth2Route.registerRoute(loginRouter);
+  spredcastRoute.registerRoute(loginRouter);
 
   loginApp.use('/v1', loginRouter);
   loginApp.use('/doc', express.static(path.join(__dirname, '/doc'), {dotfiles: 'allow'}));
