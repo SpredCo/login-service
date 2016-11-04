@@ -78,7 +78,6 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
             expect(res.body.spredcast).to.equal(cast1._id.toString());
             expect(res.body.presenter).to.be.false;
             expect(res.body.pseudo).to.not.be.undefined;
-            console.log(res.body.pseudo);
             done();
           }
         });

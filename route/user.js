@@ -64,7 +64,7 @@ function createFbUser (req, res, next) {
           } else if (fUser != null) {
             httpHelper.sendReply(res, httpHelper.error.userExist());
           } else {
-            userModel.getByPseudo(req.body.pseudo, function (err, fUser) {
+            userModel.getByPseudo(req.body.pseudo, false, function (err, fUser) {
               if (err) {
                 next(err);
               } else if (fUser != null) {
@@ -108,7 +108,7 @@ function createGoogleUser (req, res, next) {
           } else if (fUser != null) {
             httpHelper.sendReply(res, httpHelper.error.userExist());
           } else {
-            userModel.getByPseudo(req.body.pseudo, function (err, fUser) {
+            userModel.getByPseudo(req.body.pseudo, false, function (err, fUser) {
               if (err) {
                 next(err);
               } else if (fUser != null) {
