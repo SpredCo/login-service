@@ -12,7 +12,7 @@ function registerRoute (router) {
 }
 
 function checkPseudo (req, res, next) {
-  userModel.getByPseudo(req.params.pseudo, function (err, fUser) {
+  userModel.getByPseudo(req.params.pseudo, false, function (err, fUser) {
     if (err) {
       next(err);
     } else if (fUser == null) {

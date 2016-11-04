@@ -138,28 +138,4 @@ function createGoogleUser (req, res, next) {
   }
 }
 
-function checkPseudo (req, res, next) {
-  userModel.getByPseudo(req.params.pseudo, false, function (err, fUser) {
-    if (err) {
-      next(err);
-    } else if (fUser == null) {
-      httpHelper.sendReply(res, 200, {});
-    } else {
-      httpHelper.sendReply(res, httpHelper.error.pseudoExist());
-    }
-  });
-}
-
-function checkEmail (req, res, next) {
-  userModel.getByEmail(req.params.email, function (err, fUser) {
-    if (err) {
-      next(err);
-    } else if (fUser == null) {
-      httpHelper.sendReply(res, 200, {});
-    } else {
-      httpHelper.sendReply(res, httpHelper.error.userExist());
-    }
-  });
-}
-
 module.exports.registerRoute = registerRoute;
