@@ -2,10 +2,12 @@
   {
     "version": "0.6.0",
     "author": "guedj_m",
-    "date": "Fri Nov 04 2016 18:29:03 GMT+0100 (CET)",
+    "date": "Thu Sep 22 2016 11:45:43 GMT+0200 (CEST)",
     "changes": [
-      "Integrate spredcast token",
-      "Fix issue when create user from facebook or google"
+      "Update check route to /v1/users/check/...",
+      "Add check google token route (/v1/users/check/google-token/)",
+      "Add check facebook token route (/v1/users/check/facebook-token/)",
+      "Fix documentation"
     ]
   },
   {

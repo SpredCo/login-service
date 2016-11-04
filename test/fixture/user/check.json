@@ -1,0 +1,18 @@
+{
+  "client": {
+    "name": "UserCheckClientName",
+    "key": "UserCheckClientKey",
+    "secret": "UserCheckClientSecret"
+  },
+  "user": {
+    "email": "userCheck@sms.fr",
+    "password": "password",
+    "pseudo": "userCheckpseudo",
+    "first_name": "Maxime",
+    "last_name": "Guedj"
+  },
+  "unusedPseudo": "Ahahaha",
+  "unusedEmail": "unused@test.com",
+  "invalidGoogleToken": "tfizaohfioa",
+  "invalidFacebookToken": "feuezh"
+}

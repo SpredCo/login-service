@@ -1,8 +1,8 @@
 {
   "client": {
-    "name": "ClientName",
-    "key": "ClientKey",
-    "secret": "ClientSecret"
+    "name": "UserClientName",
+    "key": "UserClientKey",
+    "secret": "UserClientSecret"
   },
   "user1": {
     "email": "user1@sms.fr",
@@ -23,7 +23,5 @@
     "pseudo": "user1pseudo",
     "first_name": "Maxime",
     "last_name": "Guedj"
-  },
-  "unusedPseudo": "Ahahaha",
-  "unusedEmail": "unused@test.com"
+  }
 }

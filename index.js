@@ -6,7 +6,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const httpHelper = require('spred-http-helper');
 
-const userRoute = require('./route/user');
+const userRoute = require('./route/user/');
 const oauth2Route = require('./route/oauth2');
 const spredcastRoute = require('./route/spredcast');
 

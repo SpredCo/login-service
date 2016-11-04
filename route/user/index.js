@@ -1,15 +1,16 @@
 const httpHelper = require('spred-http-helper');
 const userModel = require('spred-common').userModel;
 
-const google = require('../service/googleAPI');
-const facebook = require('../service/facebookApi');
+const google = require('../../service/googleAPI');
+const facebook = require('../../service/facebookApi');
+const check = require('./check');
 
 function registerRoute (router) {
   router.post('/users', createUser);
   router.post('/users/facebook', createFbUser);
   router.post('/users/google', createGoogleUser);
-  router.get('/users/pseudo/check/:pseudo', checkPseudo);
-  router.get('/users/email/check/:email', checkEmail);
+
+  check.registerRoute(router);
 }
 
 function createUser (req, res, next) {

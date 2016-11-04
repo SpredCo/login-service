@@ -44,7 +44,7 @@ api:
 
   routes:
     -
-      /v1/users/pseudo/check/{pseudo}:
+      /v1/users/check/pseudo/{pseudo}:
         get:
           summary: Check if a pseudo is used
           tags:
@@ -59,9 +59,9 @@ api:
                 description: Pseudo used
                 type: Error
           errors:
-            - Invalid request
+            - Pseudo exists
     -
-      /v1/users/email/check/{email}:
+      /v1/users/check/email/{email}:
         get:
           summary: Check if an email addresss is already used
           tags:
@@ -76,7 +76,35 @@ api:
                 description: Email address used
                 type: error
           errors:
-            - Invalid request
+            - User exists
+    -
+      /v1/users/check/google-token/{token}:
+        get:
+          summary: Check if a google token is valid for signup
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: Google token valid fo signup
+                type: string
+          errors:
+            - Invalid google token
+            - User exists
+    -
+      /v1/users/check/facebook-token/{token}:
+        get:
+          summary: Check if a facebook token is valid for signup
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: Facebook token valid for signup
+                type: string
+          errors:
+            - Invalid facebook token
+            - User exists
     -
       /v1/users:
         post:
@@ -256,6 +284,7 @@ api:
           errors:
             - Invalid request
             - Invalid google token
+            - User not found
             - User exists
     -
       /v1/oauth2/facebook-connect:
@@ -281,6 +310,7 @@ api:
           errors:
             - Invalid request
             - Invalid facebook token
+            - User not found
             - User exists
 
   errors:
@@ -314,6 +344,12 @@ api:
         code: 2
         subcode: 2
         message: User exists (pseudo already in use)
+    -
+      User not found:
+        status: 404
+        code: 2
+        subcode: 1
+        message: Unable to find user
 
 
   objects:

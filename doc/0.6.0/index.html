@@ -74,6 +74,8 @@
                                     </li>
                                     <li><a href="#error-pseudo-exists">Pseudo exists</a>
                                     </li>
+                                    <li><a href="#error-user-not-found">User not found</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="bloc">
@@ -159,16 +161,32 @@
                                         <tr>
                                             <td><span class="label label-primary">GET</span>
                                             </td>
-                                            <td>/v1/users/pseudo/check/{pseudo}</td>
-                                            <td><a href="#routes-v1-users-pseudo-check-{pseudo}-get"><p>Check if a pseudo is used</p>
+                                            <td>/v1/users/check/pseudo/{pseudo}</td>
+                                            <td><a href="#routes-v1-users-check-pseudo-{pseudo}-get"><p>Check if a pseudo is used</p>
 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><span class="label label-primary">GET</span>
                                             </td>
-                                            <td>/v1/users/email/check/{email}</td>
-                                            <td><a href="#routes-v1-users-email-check-{email}-get"><p>Check if an email addresss is already used</p>
+                                            <td>/v1/users/check/email/{email}</td>
+                                            <td><a href="#routes-v1-users-check-email-{email}-get"><p>Check if an email addresss is already used</p>
+</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="label label-primary">GET</span>
+                                            </td>
+                                            <td>/v1/users/check/google-token/{token}</td>
+                                            <td><a href="#routes-v1-users-check-google-token-{token}-get"><p>Check if a google token is valid for signup</p>
+</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="label label-primary">GET</span>
+                                            </td>
+                                            <td>/v1/users/check/facebook-token/{token}</td>
+                                            <td><a href="#routes-v1-users-check-facebook-token-{token}-get"><p>Check if a facebook token is valid for signup</p>
 </a>
                                             </td>
                                         </tr>
@@ -224,10 +242,10 @@
                                 </table>
                                 <br>
                                 <br>
-                                <div id="routes-v1-users-pseudo-check-{pseudo}-get" class="panel panel-primary method-bloc">
+                                <div id="routes-v1-users-check-pseudo-{pseudo}-get" class="panel panel-primary method-bloc">
                                     <div class="panel-heading">
                                         <div class="row">
-                                            <div class="col-sm-5">GET /v1/users/pseudo/check/{pseudo}</div>
+                                            <div class="col-sm-5">GET /v1/users/check/pseudo/{pseudo}</div>
                                             <div class="cal-sm-7 tag-line">
                                                 <div class="label label-info tag"><a href="#paragraph-basic-authentication" style="color: white">Basic Auth</a>
                                                 </div>
@@ -282,25 +300,23 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <th class="response-error">400</th>
-                                                        <td>1</td>
+                                                        <th class="response-error">403</th>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <p>User exists (pseudo already in use)</p>
+                                                        </td>
                                                         <td></td>
-                                                        <td>
-                                                            <p>Invalid request</p>
-                                                        </td>
-                                                        <td>
-                                                            <p>Check the request parameters twice</p>
-                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="routes-v1-users-email-check-{email}-get" class="panel panel-primary method-bloc">
+                                <div id="routes-v1-users-check-email-{email}-get" class="panel panel-primary method-bloc">
                                     <div class="panel-heading">
                                         <div class="row">
-                                            <div class="col-sm-5">GET /v1/users/email/check/{email}</div>
+                                            <div class="col-sm-5">GET /v1/users/check/email/{email}</div>
                                             <div class="cal-sm-7 tag-line">
                                                 <div class="label label-info tag"><a href="#paragraph-basic-authentication" style="color: white">Basic Auth</a>
                                                 </div>
@@ -355,15 +371,157 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <th class="response-error">400</th>
+                                                        <th class="response-error">403</th>
+                                                        <td>2</td>
                                                         <td>1</td>
+                                                        <td>
+                                                            <p>User exists (email address already in use)</p>
+                                                        </td>
                                                         <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="routes-v1-users-check-google-token-{token}-get" class="panel panel-primary method-bloc">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-sm-5">GET /v1/users/check/google-token/{token}</div>
+                                            <div class="cal-sm-7 tag-line">
+                                                <div class="label label-info tag"><a href="#paragraph-basic-authentication" style="color: white">Basic Auth</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="method-summary method-component">
+                                            <p>Check if a google token is valid for signup</p>
+                                        </div>
+                                        <div class="method-description method-component"></div>
+                                        <div class="method-component">
+                                            <h3>Responses</h3>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Http Status Code</th>
+                                                        <th>Description</th>
+                                                        <th>Schema</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="response-ok">200</th>
                                                         <td>
-                                                            <p>Invalid request</p>
+                                                            <p>Google token valid fo signup</p>
                                                         </td>
+                                                        <td>string</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="method-component">
+                                            <h3>Errors</h3>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>HTTP status</th>
+                                                        <th>Code</th>
+                                                        <th>SubCode</th>
+                                                        <th>Message</th>
+                                                        <th>Comment</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="response-error">400</th>
+                                                        <td>2</td>
+                                                        <td>1</td>
                                                         <td>
-                                                            <p>Check the request parameters twice</p>
+                                                            <p>Invalid google token</p>
                                                         </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="response-error">403</th>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <p>User exists (email address already in use)</p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="routes-v1-users-check-facebook-token-{token}-get" class="panel panel-primary method-bloc">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-sm-5">GET /v1/users/check/facebook-token/{token}</div>
+                                            <div class="cal-sm-7 tag-line">
+                                                <div class="label label-info tag"><a href="#paragraph-basic-authentication" style="color: white">Basic Auth</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="method-summary method-component">
+                                            <p>Check if a facebook token is valid for signup</p>
+                                        </div>
+                                        <div class="method-description method-component"></div>
+                                        <div class="method-component">
+                                            <h3>Responses</h3>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Http Status Code</th>
+                                                        <th>Description</th>
+                                                        <th>Schema</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="response-ok">200</th>
+                                                        <td>
+                                                            <p>Facebook token valid for signup</p>
+                                                        </td>
+                                                        <td>string</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="method-component">
+                                            <h3>Errors</h3>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>HTTP status</th>
+                                                        <th>Code</th>
+                                                        <th>SubCode</th>
+                                                        <th>Message</th>
+                                                        <th>Comment</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="response-error">400</th>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <p>Invalid facebook token</p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="response-error">403</th>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <p>User exists (email address already in use)</p>
+                                                        </td>
+                                                        <td></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -992,6 +1150,15 @@
                                                         <td></td>
                                                     </tr>
                                                     <tr>
+                                                        <th class="response-error">404</th>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <p>Unable to find user</p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
                                                         <th class="response-error">403</th>
                                                         <td>2</td>
                                                         <td>1</td>
@@ -1102,6 +1269,15 @@
                                                         <td>2</td>
                                                         <td>
                                                             <p>Invalid facebook token</p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="response-error">404</th>
+                                                        <td>2</td>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <p>Unable to find user</p>
                                                         </td>
                                                         <td></td>
                                                     </tr>
@@ -1229,14 +1405,23 @@
                                             </td>
                                             <td></td>
                                         </tr>
+                                        <tr>
+                                            <th id="error-user-not-found" class="response-error">404</th>
+                                            <td>2</td>
+                                            <td>1</td>
+                                            <td>
+                                                <p>Unable to find user</p>
+                                            </td>
+                                            <td></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="part">
                                 <h1 id="changelog">Changelog</h1>
                                 <hr>
-                                <br><pre><code><br><span>* Integrate spredcast token</span><span>* Fix issue when create user from facebook or google</span><br><br></code></pre>
-                                <br><i>By guedj_m, Fri Nov 04 2016 18:29:03 GMT+0100 (CET)</i>
+                                <br><pre><code><br><span>* Update check route to /v1/users/check/...</span><span>* Add check google token route (/v1/users/check/google-token/)</span><span>* Add check facebook token route (/v1/users/check/facebook-token/)</span><span>* Fix documentation</span><br><br></code></pre>
+                                <br><i>By guedj_m, Thu Sep 22 2016 11:45:43 GMT+0200 (CEST)</i>
                             </div>
                         </div>
                     </div>
