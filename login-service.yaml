@@ -313,6 +313,24 @@ api:
             - User not found
             - User exists
     -
+      /v1/spredcasts:
+        get:
+          summary: Get all available spredcast
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: Found spredcast SpredCast array ('{result: [ spredcast ]}')
+                type: Spredcast
+            -
+              404:
+                description: Spredcast not found
+                type: Error
+          errors:
+            - Cast not found
+
+    -
       /v1/spredcast/{id}/token:
         post:
           summary: Get a cast token for the cast
@@ -334,6 +352,24 @@ api:
             - Invalid request
             - Cast not found
             - Authorization refused
+
+    -
+      /v1/spredcast/{url}:
+        get:
+          summary: Get a spredcast by url
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: Spredcast found
+                type: spredcast
+            -
+              404:
+                description: Spredcast not found
+                type: Error
+          errors:
+            - Cast not found
 
 
   errors:
@@ -422,6 +458,20 @@ api:
           refresh_token: ""
           expires_in: 3600
           token_type: "Bearer"
+    -
+      Spredcast:
+        description: Spredcast object
+        obj:
+          -
+            id: ""
+            name: ""
+            description: ""
+            tags: [ "" ]
+            date: ""
+            is_public: true
+            user_capacity: 10
+            members: [ "user id" ]
+            duration: 10
     -
       Cast token:
         description: Cast token object
