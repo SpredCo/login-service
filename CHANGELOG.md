@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1
+
+* Update doc
+
+*guedjm, Thu Nov 10 2016 20:13:55 GMT+0100 (CET)*
+
+---
 ## 0.8.0
 
 * Integrate GET /v1/spredcasts to get available spredcast

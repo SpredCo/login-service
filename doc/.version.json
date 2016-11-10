@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.8.1",
+    "author": "guedjm",
+    "date": "Thu Nov 10 2016 20:13:55 GMT+0100 (CET)",
+    "changes": [
+      "Update doc"
+    ]
+  },
+  {
     "version": "0.8.0",
     "author": "guedjm",
     "date": "Thu Nov 10 2016 20:05:26 GMT+0100 (CET)",
