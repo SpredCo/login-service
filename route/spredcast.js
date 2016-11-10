@@ -2,7 +2,35 @@ const common = require('spred-common');
 const httpHelper = require('spred-http-helper');
 
 function registerRoute (router) {
+  router.get('/spredcasts', getAvailableCast);
+  router.get('/spredcast/:url', getCast);
   router.post('/spredcast/:id/token', createCastToken);
+}
+
+function getAvailableCast (req, res, next) {
+  common.spredCastModel.findAvailableCast(function (err, fCasts) {
+    if (err) {
+      next(err);
+    } else {
+      var result = [];
+      fCasts.forEach(function (cast) {
+        result.push(cast.toObject({ print: true }));
+      });
+      httpHelper.sendReply(res, 200, { result: result });
+    }
+  });
+}
+
+function getCast (req, res, next) {
+  common.spredCastModel.getByUrl(req.params.url, function (err, fCast) {
+    if (err) {
+      next(err);
+    } else if (fCast === null) {
+      httpHelper.sendReply(res, httpHelper.error.castNotFound());
+    } else {
+      httpHelper.sendReply(res, 200, fCast);
+    }
+  });
 }
 
 function createCastToken (req, res, next) {
