@@ -466,11 +466,12 @@ api:
             id: ""
             name: ""
             description: ""
+            creator: "User Object"
             tags: [ "" ]
             date: ""
             is_public: true
             user_capacity: 10
-            members: [ "user id" ]
+            members: [ "User Object" ]
             duration: 10
     -
       Cast token:
