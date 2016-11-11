@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.2
+
+* Minor bug fix
+
+*guedjm, Fri Nov 11 2016 17:56:43 GMT+0100 (CET)*
+
+---
 ## 0.8.1
 
 * Update doc
