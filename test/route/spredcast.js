@@ -142,8 +142,7 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
           if (err) {
             done(err);
           } else {
-            expect(res.body.result).to.not.be.undefined;
-            expect(res.body.result).to.lengthOf(1);
+            expect(res.body).to.lengthOf(1);
             done();
           }
         });

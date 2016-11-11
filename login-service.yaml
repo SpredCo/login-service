@@ -321,7 +321,7 @@ api:
           responses:
             -
               200:
-                description: Found spredcast SpredCast array ('{result: [ spredcast ]}')
+                description: Found spredcasts
                 type: Spredcast
             -
               404:

@@ -16,7 +16,7 @@ function getAvailableCast (req, res, next) {
       fCasts.forEach(function (cast) {
         result.push(cast.toObject({ print: true }));
       });
-      httpHelper.sendReply(res, 200, { result: result });
+      httpHelper.sendReply(res, 200, result);
     }
   });
 }
