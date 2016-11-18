@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.4
+
+* Update documentation
+* Fix tests
+
+*guedj_m, Fri Nov 18 2016 12:06:01 GMT+0100 (CET)*
+
+---
 ## 0.8.3
 
 * Fix get cast
