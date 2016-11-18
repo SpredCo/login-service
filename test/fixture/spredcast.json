@@ -32,7 +32,8 @@
     "user_capacity": 10,
     "date": "now",
     "tags": ["ruby", "null"],
-    "url": "cast1"
+    "url": "cast1",
+    "cover_url": "http://cover.url"
   },
   "cast2": {
     "name": "Cast2",
@@ -40,7 +41,8 @@
     "is_public": false,
     "user_capacity": 10,
     "date": "now",
-    "url": "cast2"
+    "url": "cast2",
+    "cover_url": "http://cover.url2"
   },
   "token1": "casttoken1",
   "token2": "casttoken2",

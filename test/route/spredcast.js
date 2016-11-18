@@ -30,12 +30,12 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
                     done(err);
                   } else {
                     common.spredCastModel.createNew(cUser1._id, fixture.cast1.name, fixture.cast1.description, fixture.cast1.tags,
-                      fixture.cast1.date, fixture.cast1.is_public, fixture.cast1.user_capacity, [], null, fixture.cast1.url, function (err, cCast) {
+                      fixture.cast1.date, fixture.cast1.is_public, fixture.cast1.user_capacity, [], null, fixture.cast1.url, fixture.cast1.cover_url, function (err, cCast) {
                         if (err) {
                           done(err);
                         } else {
                           common.spredCastModel.createNew(cUser1._id, fixture.cast2.name, fixture.cast2.description, null,
-                            fixture.cast2.date, fixture.cast2.is_public, fixture.cast2.user_capacity, [ cUser2 ], null, fixture.cast2.url, function (err, cCast2) {
+                            fixture.cast2.date, fixture.cast2.is_public, fixture.cast2.user_capacity, [ cUser2 ], null, fixture.cast2.url, fixture.cast2.cover_url, function (err, cCast2) {
                               if (err) {
                                 done(err);
                               } else {
