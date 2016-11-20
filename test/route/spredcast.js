@@ -30,12 +30,12 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
                     done(err);
                   } else {
                     common.spredCastModel.createNew(cUser1._id, fixture.cast1.name, fixture.cast1.description, fixture.cast1.tags,
-                      fixture.cast1.date, fixture.cast1.is_public, fixture.cast1.user_capacity, [], null, fixture.cast1.url, function (err, cCast) {
+                      fixture.cast1.date, fixture.cast1.is_public, fixture.cast1.user_capacity, [], null, fixture.cast1.url, fixture.cast1.cover_url, function (err, cCast) {
                         if (err) {
                           done(err);
                         } else {
                           common.spredCastModel.createNew(cUser1._id, fixture.cast2.name, fixture.cast2.description, null,
-                            fixture.cast2.date, fixture.cast2.is_public, fixture.cast2.user_capacity, [ cUser2 ], null, fixture.cast2.url, function (err, cCast2) {
+                            fixture.cast2.date, fixture.cast2.is_public, fixture.cast2.user_capacity, [ cUser2 ], null, fixture.cast2.url, fixture.cast2.cover_url, function (err, cCast2) {
                               if (err) {
                                 done(err);
                               } else {
@@ -66,7 +66,6 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
     it('Should create a cast token for a public cast', function (done) {
       apiSrv
         .post('/v1/spredcast/' + cast1._id + '/token')
-        .send({ presenter: false })
         .set('Content-Type', 'application/json')
         .auth(fixture.client.key, fixture.client.secret)
         .expect(201)
@@ -83,45 +82,12 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
         });
     });
 
-    it('Should refuse to create a presenter token', function (done) {
-      apiSrv
-        .post('/v1/spredcast/' + cast1._id + '/token')
-        .send({ presenter: true })
-        .set('Content-Type', 'application/json')
-        .auth(fixture.client.key, fixture.client.secret)
-        .expect(403)
-        .end(function (err, res) {
-          if (err) {
-            done(err);
-          } else {
-            done();
-          }
-        });
-    });
-
     it('Should refuse to create a token for a private cast', function (done) {
       apiSrv
         .post('/v1/spredcast/' + cast2._id + '/token')
-        .send({ presenter: true })
         .set('Content-Type', 'application/json')
         .auth(fixture.client.key, fixture.client.secret)
         .expect(403)
-        .end(function (err, res) {
-          if (err) {
-            done(err);
-          } else {
-            done();
-          }
-        });
-    });
-
-    it('Should reply an error if body is empty', function (done) {
-      apiSrv
-        .post('/v1/spredcast/' + cast1._id + '/token')
-        .send()
-        .set('Content-Type', 'application/json')
-        .auth(fixture.client.key, fixture.client.secret)
-        .expect(400)
         .end(function (err, res) {
           if (err) {
             done(err);
