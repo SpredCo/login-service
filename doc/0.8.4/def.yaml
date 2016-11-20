@@ -322,11 +322,7 @@ api:
             -
               200:
                 description: Found spredcasts
-                type: Spredcast
-            -
-              404:
-                description: Spredcast not found
-                type: Error
+                type: Spredcast array
           errors:
             - Cast not found
 
@@ -465,6 +461,26 @@ api:
             user_capacity: 10
             members: [ "User Object" ]
             duration: 10
+            url: ""
+            cover_url: ""
+    -
+      Spredcast array:
+        description: Spredcast object array
+        obj:
+          -
+            -
+              id: ""
+              name: ""
+              description: ""
+              creator: "User Object"
+              tags: [ "" ]
+              date: ""
+              is_public: true
+              user_capacity: 10
+              members: [ "User Object" ]
+              duration: 10
+              url: ""
+              cover_url: ""
     -
       Cast token:
         description: Cast token object

@@ -2,9 +2,10 @@
 
 ## 0.8.4
 
-* presenter parameter is now longer required to get cast token
+* Update documentation
+* Fix tests
 
-*guedjm, Sun Nov 20 2016 13:56:12 GMT+0100 (CET)*
+*guedj_m, Fri Nov 18 2016 12:06:01 GMT+0100 (CET)*
 
 ---
 ## 0.8.3

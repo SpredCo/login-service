@@ -61,6 +61,8 @@
                                     </li>
                                     <li><a href="#object-spredcast">Spredcast</a>
                                     </li>
+                                    <li><a href="#object-spredcast-array">Spredcast array</a>
+                                    </li>
                                     <li><a href="#object-cast-token">Cast token</a>
                                     </li>
                                 </ul>
@@ -1358,15 +1360,7 @@
                                                         <td>
                                                             <p>Found spredcasts</p>
                                                         </td>
-                                                        <td><a href="#object-spredcast">Spredcast</a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="response-error">404</th>
-                                                        <td>
-                                                            <p>Spredcast not found</p>
-                                                        </td>
-                                                        <td><a href="#object-error">Error</a>
+                                                        <td><a href="#object-spredcast-array">Spredcast array</a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1609,8 +1603,36 @@
     <span class=json-key>members</span>: [
       <span class=json-string>"User Object"</span>
     ],
-    <span class=json-key>duration</span>: <span class=json-value>10</span>
+    <span class=json-key>duration</span>: <span class=json-value>10</span>,
+    <span class=json-key>url</span>: <span class=json-string>""</span>,
+    <span class=json-key>cover_url</span>: <span class=json-string>""</span>
   }
+]</code></pre>
+                                <br>
+                                <h2 id="object-spredcast-array">Spredcast array</h2>
+                                <div class="obj-description">
+                                    <p>Spredcast object array</p>
+                                </div><pre><code class="prettyprint">[
+  [
+    {
+      <span class=json-key>id</span>: <span class=json-string>""</span>,
+      <span class=json-key>name</span>: <span class=json-string>""</span>,
+      <span class=json-key>description</span>: <span class=json-string>""</span>,
+      <span class=json-key>creator</span>: <span class=json-string>"User Object"</span>,
+      <span class=json-key>tags</span>: [
+        <span class=json-string>""</span>
+      ],
+      <span class=json-key>date</span>: <span class=json-string>""</span>,
+      <span class=json-key>is_public</span>: <span class=json-value>true</span>,
+      <span class=json-key>user_capacity</span>: <span class=json-value>10</span>,
+      <span class=json-key>members</span>: [
+        <span class=json-string>"User Object"</span>
+      ],
+      <span class=json-key>duration</span>: <span class=json-value>10</span>,
+      <span class=json-key>url</span>: <span class=json-string>""</span>,
+      <span class=json-key>cover_url</span>: <span class=json-string>""</span>
+    }
+  ]
 ]</code></pre>
                                 <br>
                                 <h2 id="object-cast-token">Cast token</h2>
@@ -1720,9 +1742,8 @@
                             </div>
                             <div class="part">
                                 <h1 id="changelog">Changelog</h1>
-                                <hr>
-                                <br><pre><code><br><span>* presenter parameter is now longer required to get cast token</span><br><br></code></pre>
-                                <br><i>By guedjm, Sun Nov 20 2016 13:56:12 GMT+0100 (CET)</i>
+                                <br><pre><code><br><span>* Update documentation</span><span>* Fix tests</span><br><br></code></pre>
+                                <br><i>By guedj_m, Fri Nov 18 2016 12:06:01 GMT+0100 (CET)</i>
                             </div>
                         </div>
                     </div>
