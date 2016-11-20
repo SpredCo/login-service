@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.5
+
+* presenter parameter is not longer required to get a cast token
+
+*guedjm, Sun Nov 20 2016 14:03:13 GMT+0100 (CET)*
+
+---
 ## 0.8.4
 
 * Update documentation
