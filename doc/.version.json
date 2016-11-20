@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.8.4",
+    "author": "guedjm",
+    "date": "Sun Nov 20 2016 13:56:12 GMT+0100 (CET)",
+    "changes": [
+      "presenter parameter is now longer required to get cast token"
+    ]
+  },
+  {
     "version": "0.8.3",
     "author": "guedjm",
     "date": "Fri Nov 11 2016 18:42:49 GMT+0100 (CET)",
