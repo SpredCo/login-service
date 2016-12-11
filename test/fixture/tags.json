@@ -1,0 +1,15 @@
+{
+  "client": {
+    "name": "tags",
+    "key": "tags",
+    "secret": "tags"
+  },
+  "tag1": {
+    "name": "Tag1",
+    "description": "Tag1"
+  },
+  "tag2": {
+    "name": "Tag2",
+    "description": "Tag2"
+  }
+}

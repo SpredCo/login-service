@@ -323,9 +323,17 @@ api:
               200:
                 description: Found spredcasts
                 type: Spredcast array
-          errors:
-            - Cast not found
-
+    -
+      /v1/tags:
+        get:
+          summary: Get all tags
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description:  Tags
+                type: Tag array
     -
       /v1/spredcast/{id}/token:
         post:
@@ -450,12 +458,28 @@ api:
       Spredcast:
         description: Spredcast object
         obj:
+          id: ""
+          name: ""
+          description: ""
+          creator: "User Object"
+          tags: [ " Tag object" ]
+          date: ""
+          is_public: true
+          user_capacity: 10
+          members: [ "User Object" ]
+          duration: 10
+          url: ""
+          cover_url: ""
+    -
+      Spredcast array:
+        description: Spredcast object array
+        obj:
           -
             id: ""
             name: ""
             description: ""
             creator: "User Object"
-            tags: [ "" ]
+            tags: [ "Tag Object" ]
             date: ""
             is_public: true
             user_capacity: 10
@@ -464,29 +488,25 @@ api:
             url: ""
             cover_url: ""
     -
-      Spredcast array:
-        description: Spredcast object array
-        obj:
-          -
-            -
-              id: ""
-              name: ""
-              description: ""
-              creator: "User Object"
-              tags: [ "" ]
-              date: ""
-              is_public: true
-              user_capacity: 10
-              members: [ "User Object" ]
-              duration: 10
-              url: ""
-              cover_url: ""
-    -
       Cast token:
         description: Cast token object
         obj:
+          cast_token: ""
+          spredcast: "id"
+          presenter: true
+          pseudo: ""
+    -
+      Tag:
+        description: Tag object
+        obj:
+          id: ""
+          name: ""
+          description: ""
+    -
+      Tag array:
+        description: Tag array object
+        obj:
           -
-            cast_token: ""
-            spredcast: "id"
-            presenter: true
-            pseudo: ""
+            id: ""
+            name: ""
+            description: ""

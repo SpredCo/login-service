@@ -46,5 +46,9 @@
   },
   "token1": "casttoken1",
   "token2": "casttoken2",
-  "token3": "casttoken3"
+  "token3": "casttoken3",
+  "tag1": {
+    "name": "Tag11",
+    "description": "Tag11"
+  }
 }
