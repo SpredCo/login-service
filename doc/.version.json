@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.10.0",
+    "author": "guedjm",
+    "date": "Sun Dec 11 2016 22:53:26 GMT+0100 (CET)",
+    "changes": [
+      "Change url to get cast token from /v1/spredcast/{id}/token to /v1/spredcastS/...",
+      "Change url to get cast list from /v1/spredcast to /v1/spredcastS",
+      "Change url to get cast by url from /v1/spredcast/{url} tp /v1/spredcastS/url",
+      "Add route to get cast by tags (/v1/spredcasts/tag{tag})"
+    ]
+  },
+  {
     "version": "0.9.0",
     "author": "guedjm",
     "date": "Sun Dec 11 2016 15:09:26 GMT+0100 (CET)",

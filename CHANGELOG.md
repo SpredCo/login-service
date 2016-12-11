@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.0
+
+* Change url to get cast token from /v1/spredcast/{id}/token to /v1/spredcastS/...
+* Change url to get cast list from /v1/spredcast to /v1/spredcastS
+* Change url to get cast by url from /v1/spredcast/{url} tp /v1/spredcastS/url
+* Add route to get cast by tags (/v1/spredcasts/tag{tag})
+
+*guedjm, Sun Dec 11 2016 22:53:26 GMT+0100 (CET)*
+
+---
 ## 0.9.0
 
 * Integratye tag managment
