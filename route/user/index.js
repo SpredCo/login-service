@@ -164,7 +164,8 @@ function indexUser(cUser, cb) {
     objectID: cUser._id,
     pseudo: '@' + cUser.pseudo,
     firstname: cUser.firstName,
-    lastname: cUser.lastName
+    lastname: cUser.lastName,
+    type: 'user'
   };
   addIndexFunc(['user', 'global'], [indexedUser], function (err) {
     if (err) {
