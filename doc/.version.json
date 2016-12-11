@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.9.0",
+    "author": "guedjm",
+    "date": "Sun Dec 11 2016 15:09:26 GMT+0100 (CET)",
+    "changes": [
+      "Integratye tag managment"
+    ]
+  },
+  {
     "version": "0.8.5",
     "author": "guedjm",
     "date": "Sun Nov 20 2016 14:03:13 GMT+0100 (CET)",

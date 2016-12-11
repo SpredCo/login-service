@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.0
+
+* Integratye tag managment
+
+*guedjm, Sun Dec 11 2016 15:09:26 GMT+0100 (CET)*
+
+---
 ## 0.8.5
 
 * presenter parameter is not longer required to get a cast token
