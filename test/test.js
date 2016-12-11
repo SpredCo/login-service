@@ -19,7 +19,7 @@ before(function (done) {
         done(err);
       } else {
         console.log('Database dropped');
-        const app = loginApp.getApp(false);
+        const app = loginApp.getApp(false, fakeIndex);
         app.listen(config.get('server.port'), function () {
           done();
         });
@@ -38,3 +38,9 @@ describe('Testing login service', function () {
     requireDir('./route');
   });
 });
+
+function fakeIndex(indexes, obj, cb) {
+  console.log('Indexing on ' + indexes);
+  console.log(obj);
+  cb();
+}

@@ -5,11 +5,14 @@ const google = require('../../service/googleAPI');
 const facebook = require('../../service/facebookApi');
 const check = require('./check');
 
-function registerRoute (router) {
+var addIndexFunc;
+
+function registerRoute (router, algoliaAddIndexFunc) {
   router.post('/users', createUser);
   router.post('/users/facebook', createFbUser);
   router.post('/users/google', createGoogleUser);
 
+  addIndexFunc = algoliaAddIndexFunc;
   check.registerRoute(router);
 }
 
@@ -39,7 +42,13 @@ function createUser (req, res, next) {
                 if (err) {
                   next(err);
                 } else {
-                  httpHelper.sendReply(res, 201, cUser);
+                  indexUser(cUser, function (err) {
+                    if (err) {
+                      next(err);
+                    } else {
+                      httpHelper.sendReply(res, 201, cUser);
+                    }
+                  });
                 }
               });
           }
@@ -82,7 +91,13 @@ function createFbUser (req, res, next) {
                     if (err) {
                       next(err);
                     } else {
-                      httpHelper.sendReply(res, 201, cUser);
+                      indexUser(cUser, function (err) {
+                        if (err) {
+                          next(err);
+                        } else {
+                          httpHelper.sendReply(res, 201, cUser);
+                        }
+                      });
                     }
                   }
                 );
@@ -126,7 +141,13 @@ function createGoogleUser (req, res, next) {
                     if (err) {
                       next(err);
                     } else {
-                      httpHelper.sendReply(res, 201, cUser);
+                      indexUser(cUser, function (err) {
+                        if (err) {
+                          next(err);
+                        } else {
+                          httpHelper.sendReply(res, 201, cUser);
+                        }
+                      });
                     }
                   });
               }
@@ -136,6 +157,22 @@ function createGoogleUser (req, res, next) {
       }
     });
   }
+}
+
+function indexUser(cUser, cb) {
+  var indexedUser = {
+    objectID: cUser._id,
+    pseudo: '@' + cUser.pseudo,
+    firstname: cUser.firstName,
+    lastname: cUser.lastName
+  };
+  addIndexFunc(['user', 'global'], [indexedUser], function (err) {
+    if (err) {
+      cb(err);
+    } else {
+      cb();
+    }
+  });
 }
 
 module.exports.registerRoute = registerRoute;

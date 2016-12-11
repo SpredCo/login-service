@@ -7,7 +7,7 @@ const common = require('spred-common');
 const url = config.get('test.server.url') + ':' + config.get('test.server.port');
 const apiSrv = supertest(url);
 
-describe.only('Testing tags route', function () {
+describe('Testing tags route', function () {
   before(function (done) {
     common.clientModel.createFix(fixture.client.name, fixture.client.key, fixture.client.secret, function (err, cClient) {
       if (err) {
@@ -41,7 +41,7 @@ describe.only('Testing tags route', function () {
           if (err) {
             done(err);
           } else {
-            expect(res.body).to.have.lengthOf(2);
+            expect(res.body).to.have.lengthOf(3);
             done();
           }
         });

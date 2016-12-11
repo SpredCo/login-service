@@ -14,7 +14,7 @@ const tagsRoute = require('./route/tag');
 var loginApp = null;
 var loginRouter = null;
 
-function getApp (log) {
+function getApp (log, algoliaAddIndexFunc) {
   logger.info('Initializing login app ...');
   loginApp = express();
   loginApp.use(bodyParser.json());
@@ -31,7 +31,7 @@ function getApp (log) {
   loginRouter.use(passport.authenticate('basic', {session: false}));
 
   // Register all routes
-  userRoute.registerRoute(loginRouter);
+  userRoute.registerRoute(loginRouter, algoliaAddIndexFunc);
   oauth2Route.registerRoute(loginRouter);
   spredcastRoute.registerRoute(loginRouter);
   tagsRoute.registerRoute(loginRouter);

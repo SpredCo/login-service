@@ -12,7 +12,7 @@ mongoose.connection.on('error', function (err) {
 mongoose.connection.on('open', function () {
   logger.info('Connection success !');
 
-  const app = loginApp.getApp(true);
+  const app = loginApp.getApp(true, fakeIndex);
   app.listen(config.get('server.port'), function () {
     logger.info('Server started on port ' + config.get('server.port'));
   });
@@ -24,3 +24,9 @@ const connectionStr = 'mongodb://' + config.get('dbConfig.host') + ':' +
 
 logger.info('Starting dev service ...');
 mongoose.connect(connectionStr);
+
+function fakeIndex(indexes, obj, cb) {
+  logger.info('Indexing on ' + indexes);
+  logger.info(obj);
+  cb();
+}
