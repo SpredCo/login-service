@@ -159,10 +159,11 @@ function createGoogleUser (req, res, next) {
   }
 }
 
-function indexUser(cUser, cb) {
+function indexUser (cUser, cb) {
   var indexedUser = {
     objectID: cUser._id,
     pseudo: '@' + cUser.pseudo,
+    name: '@' + cUser.pseudo,
     firstname: cUser.firstName,
     lastname: cUser.lastName,
     type: 'user'

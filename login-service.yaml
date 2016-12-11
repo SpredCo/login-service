@@ -335,7 +335,7 @@ api:
                 description:  Tags
                 type: Tag array
     -
-      /v1/spredcast/{id}/token:
+      /v1/spredcasts/{id}/token:
         post:
           summary: Get a cast token for the cast
           tags:
@@ -350,7 +350,7 @@ api:
             - Authorization refused
 
     -
-      /v1/spredcast/{url}:
+      /v1/spredcasts/{url}:
         get:
           summary: Get a spredcast by url
           tags:
@@ -366,6 +366,19 @@ api:
                 type: Error
           errors:
             - Cast not found
+    -
+      /v1/spredcasts/tag/{tag}:
+        get:
+          summary: Get a list of spredcast related to tag
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: List of spredcasts
+                type: spredcast array
+          errors:
+            - Tag not found
 
 
   errors:
@@ -417,8 +430,12 @@ api:
         code: 5
         subcode: 1
         message: Unable to find cast
-
-
+    -
+      Tag not found:
+        status: 404
+        code: 6
+        subcode: 1
+        message: Unable to find tag
 
   objects:
     -

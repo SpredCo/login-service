@@ -3,8 +3,9 @@ const httpHelper = require('spred-http-helper');
 
 function registerRoute (router) {
   router.get('/spredcasts', getAvailableCast);
-  router.get('/spredcast/:url', getCast);
-  router.post('/spredcast/:id/token', createCastToken);
+  router.get('/spredcasts/tag/:tag', getByTag);
+  router.get('/spredcasts/:url', getCast);
+  router.post('/spredcasts/:id/token', createCastToken);
 }
 
 function getAvailableCast (req, res, next) {
@@ -29,6 +30,24 @@ function getCast (req, res, next) {
       httpHelper.sendReply(res, httpHelper.error.castNotFound());
     } else {
       httpHelper.sendReply(res, 200, fCast);
+    }
+  });
+}
+
+function getByTag (req, res, next) {
+  common.tagModel.getByName(req.params.tag, function (err, fTag) {
+    if (err) {
+      next(err);
+    } else if (fTag === null) {
+      httpHelper.sendReply(res, httpHelper.error.tagNotFound());
+    } else {
+      common.spredCastModel.getByTag(fTag._id, function (err, fCasts) {
+        if (err) {
+          next(err);
+        } else {
+          httpHelper.sendReply(res, 200, fCasts);
+        }
+      });
     }
   });
 }

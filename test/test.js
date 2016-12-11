@@ -39,7 +39,7 @@ describe('Testing login service', function () {
   });
 });
 
-function fakeIndex(indexes, obj, cb) {
+function fakeIndex (indexes, obj, cb) {
   console.log('Indexing on ' + indexes);
   console.log(obj);
   cb();

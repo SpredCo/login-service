@@ -9,8 +9,9 @@ const apiSrv = supertest(url);
 
 var cast1;
 var cast2;
+var tag;
 
-describe('Testing spredcast routes (/v1/spredcast)', function () {
+describe.only('Testing spredcast routes (/v1/spredcasts)', function () {
   before(function (done) {
     this.timeout(4000);
     common.clientModel.createFix(fixture.client.name, fixture.client.key, fixture.client.secret, function (err, cClient) {
@@ -49,6 +50,7 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
                                       } else {
                                         cast1 = cCast;
                                         cast2 = cCast2;
+                                        tag = cTag;
                                         done();
                                       }
                                     });
@@ -68,10 +70,10 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
     });
   });
 
-  describe('Testing cast token creation (POST /v1/spredcast/{id}/token) ', function () {
+  describe('Testing cast token creation (POST /v1/spredcasts/{id}/token) ', function () {
     it('Should create a cast token for a public cast', function (done) {
       apiSrv
-        .post('/v1/spredcast/' + cast1._id + '/token')
+        .post('/v1/spredcasts/' + cast1._id + '/token')
         .set('Content-Type', 'application/json')
         .auth(fixture.client.key, fixture.client.secret)
         .expect(201)
@@ -90,7 +92,7 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
 
     it('Should refuse to create a token for a private cast', function (done) {
       apiSrv
-        .post('/v1/spredcast/' + cast2._id + '/token')
+        .post('/v1/spredcasts/' + cast2._id + '/token')
         .set('Content-Type', 'application/json')
         .auth(fixture.client.key, fixture.client.secret)
         .expect(403)
@@ -121,10 +123,41 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
     });
   });
 
+  describe('Testing cast listing by tag (GET /v1/spredcasts/tag/{tag})', function () {
+    it('Should return the list of spredcast related to tag', function (done) {
+      apiSrv
+        .get('/v1/spredcasts/tag/' + tag.name)
+        .auth(fixture.client.key, fixture.client.secret)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            expect(res.body).to.have.lengthOf(1);
+            done();
+          }
+        });
+    });
+
+    it('Should return an error if tag is no found', function (done) {
+      apiSrv
+        .get('/v1/spredcasts/tag/toto')
+        .auth(fixture.client.key, fixture.client.secret)
+        .expect(404)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            done();
+          }
+        });
+    });
+  });
+
   describe('Testing get cast (GET /v1/spreadcast/{url}', function () {
     it('Should reply a cast object', function (done) {
       apiSrv
-        .get('/v1/spredcast/' + cast1.url)
+        .get('/v1/spredcasts/' + cast1.url)
         .auth(fixture.client.key, fixture.client.secret)
         .expect(200)
         .end(function (err, res) {
@@ -140,7 +173,7 @@ describe('Testing spredcast routes (/v1/spredcast)', function () {
 
     it('Should reply a cast object', function (done) {
       apiSrv
-        .get('/v1/spredcast/' + cast1.url + '78')
+        .get('/v1/spredcasts/' + cast1.url + '78')
         .auth(fixture.client.key, fixture.client.secret)
         .expect(404)
         .end(function (err, res) {
