@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.10.1
+
+* Fix cast get by tag
+
+*guedjm, Thu Dec 15 2016 18:27:00 GMT+0100 (CET)*
+
+---
 ## 0.10.0
 
 * Change url to get cast token from /v1/spredcast/{id}/token to /v1/spredcastS/...
