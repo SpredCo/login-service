@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.10.2
+
+* Remove following proprety from user object
+
+*guedjm, Fri Dec 16 2016 13:43:36 GMT+0100 (CET)*
+
+---
 ## 0.10.1
 
 * Fix cast get by tag
