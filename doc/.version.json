@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.11.1",
+    "author": "guedjm",
+    "date": "Fri Dec 16 2016 18:18:35 GMT+0100 (CET)",
+    "changes": [
+      "Update route GET /v1/users/{id}/following -> /follow"
+    ]
+  },
+  {
     "version": "0.11.0",
     "author": "guedjm",
     "date": "Fri Dec 16 2016 18:05:23 GMT+0100 (CET)",

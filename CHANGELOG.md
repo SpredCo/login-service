@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.1
+
+* Update route GET /v1/users/{id}/following -> /follow
+
+*guedjm, Fri Dec 16 2016 18:18:35 GMT+0100 (CET)*
+
+---
 ## 0.11.0
 
 * Add /v1/users/{id/pseudo} to get user information
