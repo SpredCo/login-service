@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.0
+
+* Add /v1/users/{id/pseudo} to get user information
+* Add /v1/users/{id}/following to get user follow
+* Add /v1/users/{id}/follower to get user follower
+
+*guedjm, Fri Dec 16 2016 18:05:23 GMT+0100 (CET)*
+
+---
 ## 0.10.2
 
 * Remove following proprety from user object
