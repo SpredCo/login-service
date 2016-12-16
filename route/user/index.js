@@ -1,5 +1,5 @@
 const httpHelper = require('spred-http-helper');
-const userModel = require('spred-common').userModel;
+const common = require('spred-common');
 
 const google = require('../../service/googleAPI');
 const facebook = require('../../service/facebookApi');
@@ -12,6 +12,10 @@ function registerRoute (router, algoliaAddIndexFunc) {
   router.post('/users/facebook', createFbUser);
   router.post('/users/google', createGoogleUser);
 
+  router.get('/users/:id', getUserInfo);
+  router.get('/users/:id/follower', getUserFollower);
+  router.get('/users/:id/following', getUserFollowing);
+
   addIndexFunc = algoliaAddIndexFunc;
   check.registerRoute(router);
 }
@@ -21,19 +25,19 @@ function createUser (req, res, next) {
     req.body.first_name === undefined || req.body.last_name === undefined) {
     httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
   } else {
-    userModel.getByEmail(req.body.email, function (err, fUser) {
+    common.userModel.getByEmail(req.body.email, function (err, fUser) {
       if (err) {
         next(err);
       } else if (fUser != null) {
         httpHelper.sendReply(res, httpHelper.error.userExist());
       } else {
-        userModel.getByPseudo(req.body.pseudo, false, function (err, fUser) {
+        common.userModel.getByPseudo(req.body.pseudo, function (err, fUser) {
           if (err) {
             next(err);
           } else if (fUser != null) {
             httpHelper.sendReply(res, httpHelper.error.pseudoExist());
           } else {
-            userModel.createPassword(req.body.email,
+            common.userModel.createPassword(req.body.email,
               req.body.password,
               req.body.pseudo,
               req.body.first_name,
@@ -68,19 +72,19 @@ function createFbUser (req, res, next) {
       } else if (fbErr) {
         httpHelper.sendReply(res, fbErr);
       } else {
-        userModel.getByEmail(userInfo.email, function (err, fUser) {
+        common.userModel.getByEmail(userInfo.email, function (err, fUser) {
           if (err) {
             next(err);
           } else if (fUser != null) {
             httpHelper.sendReply(res, httpHelper.error.userExist());
           } else {
-            userModel.getByPseudo(req.body.pseudo, false, function (err, fUser) {
+            common.userModel.getByPseudo(req.body.pseudo, function (err, fUser) {
               if (err) {
                 next(err);
               } else if (fUser != null) {
                 httpHelper.sendReply(res, httpHelper.error.pseudoExist());
               } else {
-                userModel.createFacebook(
+                common.userModel.createFacebook(
                   userInfo.email,
                   userInfo.id,
                   req.body.pseudo,
@@ -118,19 +122,19 @@ function createGoogleUser (req, res, next) {
       if (err) {
         httpHelper.sendReply(res, httpHelper.error.invalidGoogleToken());
       } else {
-        userModel.getByEmail(info['email'], function (err, fUser) {
+        common.userModel.getByEmail(info['email'], function (err, fUser) {
           if (err) {
             next(err);
           } else if (fUser != null) {
             httpHelper.sendReply(res, httpHelper.error.userExist());
           } else {
-            userModel.getByPseudo(req.body.pseudo, false, function (err, fUser) {
+            common.userModel.getByPseudo(req.body.pseudo, function (err, fUser) {
               if (err) {
                 next(err);
               } else if (fUser != null) {
                 httpHelper.sendReply(res, httpHelper.error.pseudoExist());
               } else {
-                userModel.createGoogle(
+                common.userModel.createGoogle(
                   info['email'],
                   info['id'],
                   req.body.pseudo,
@@ -157,6 +161,66 @@ function createGoogleUser (req, res, next) {
       }
     });
   }
+}
+
+function getUserInfo (req, res, next) {
+  if (req.params.id[0] === '@') {
+    common.userModel.getByPseudo(req.params.id.substring(1), function (err, fUser) {
+      if (err) {
+        next(err);
+      } else if (fUser == null) {
+        httpHelper.sendReply(res, httpHelper.error.userNotFound());
+      } else {
+        httpHelper.sendReply(res, 200, fUser);
+      }
+    });
+  } else {
+    common.userModel.getById(req.params.id, function (err, fUser) {
+      if (err) {
+        next(err);
+      } else if (fUser == null) {
+        httpHelper.sendReply(res, httpHelper.error.userNotFound());
+      } else {
+        httpHelper.sendReply(res, 200, fUser, next);
+      }
+    });
+  }
+}
+
+function getUserFollower (req, res, next) {
+  common.userModel.getById(req.params.id, function (err, fUser) {
+    if (err) {
+      next(err);
+    } else if (fUser === null) {
+      httpHelper.sendReply(res, httpHelper.error.userNotFound());
+    } else {
+      common.followModel.getUserFollowed(req.params.id, function (err, fFollowers) {
+        if (err) {
+          next(err);
+        } else {
+          httpHelper.sendReply(res, 200, fFollowers);
+        }
+      });
+    }
+  });
+}
+
+function getUserFollowing (req, res, next) {
+  common.userModel.getById(req.params.id, function (err, fUser) {
+    if (err) {
+      next(err);
+    } else if (fUser === null) {
+      httpHelper.sendReply(res, httpHelper.error.userNotFound());
+    } else {
+      common.followModel.getUserFollow(req.params.id, function (err, fFollow) {
+        if (err) {
+          next(err);
+        } else {
+          httpHelper.sendReply(res, 200, fFollow);
+        }
+      });
+    }
+  });
 }
 
 function indexUser (cUser, cb) {

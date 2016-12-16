@@ -12,13 +12,20 @@
     "last_name": "Guedj"
   },
   "user2": {
-    "email": "user1@sms.fr",
+    "email": "user2@sms.fr",
     "password": "password",
+    "pseudo": "user2pseudo",
     "first_name": "Maxime",
     "last_name": "Guedj"
   },
   "user3": {
     "email": "user3@sms.fr",
+    "password": "password",
+    "first_name": "Maxime",
+    "last_name": "Guedj"
+  },
+  "user4": {
+    "email": "user4@sms.fr",
     "password": "password",
     "pseudo": "user1pseudo",
     "first_name": "Maxime",

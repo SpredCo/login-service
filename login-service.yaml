@@ -313,6 +313,46 @@ api:
             - User not found
             - User exists
     -
+      /v1/users/{id}:
+        get:
+          summary: Get user information.
+          description: Id can be user id or @pseudo
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: Ok
+                type: User
+          errors:
+            - User not found
+    -
+      /v1/users/{id}/following:
+        get:
+          summary: Get user follow
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: User follow
+                type: Follow array object
+          errors:
+            - User not found
+    -
+      /v1/users/{id}/follower:
+        get:
+          summary: Get user followers
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: User follower
+                type: Follower array object
+          errors:
+            - User not found
+    -
       /v1/spredcasts:
         get:
           summary: Get all available spredcast
@@ -525,3 +565,19 @@ api:
             id: ""
             name: ""
             description: ""
+    -
+      Follow array object:
+        description: Follow object array
+        obj:
+          -
+            user: "user id"
+            following: "user object of following user"
+            created_at: ""
+    -
+      Follower array object:
+        description: Follower object array
+        obj:
+          -
+            user: "User object of follower"
+            following: "user id"
+            created_at: ""

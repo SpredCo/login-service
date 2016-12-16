@@ -11,7 +11,7 @@ var cast1;
 var cast2;
 var tag;
 
-describe.only('Testing spredcast routes (/v1/spredcasts)', function () {
+describe('Testing spredcast routes (/v1/spredcasts)', function () {
   before(function (done) {
     this.timeout(4000);
     common.clientModel.createFix(fixture.client.name, fixture.client.key, fixture.client.secret, function (err, cClient) {
