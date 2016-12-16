@@ -215,10 +215,10 @@ describe.only('Testing user creation (POST /v1/users)', function () {
     });
   });
 
-  describe('Testing get user following (GET /v1/users/:id/following)', function () {
+  describe('Testing get user following (GET /v1/users/:id/follow)', function () {
     it('Should reply user following', function (done) {
       loginSrv
-        .get('/v1/users/' + user._id + '/following')
+        .get('/v1/users/' + user._id + '/follow')
         .set('Content-Type', 'application/json')
         .auth(fixture.client.key, fixture.client.secret)
         .expect(200)

@@ -327,7 +327,7 @@ api:
           errors:
             - User not found
     -
-      /v1/users/{id}/following:
+      /v1/users/{id}/follow:
         get:
           summary: Get user follow
           tags:

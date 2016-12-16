@@ -14,7 +14,7 @@ function registerRoute (router, algoliaAddIndexFunc) {
 
   router.get('/users/:id', getUserInfo);
   router.get('/users/:id/follower', getUserFollower);
-  router.get('/users/:id/following', getUserFollowing);
+  router.get('/users/:id/follow', getUserFollow);
 
   addIndexFunc = algoliaAddIndexFunc;
   check.registerRoute(router);
@@ -205,7 +205,7 @@ function getUserFollower (req, res, next) {
   });
 }
 
-function getUserFollowing (req, res, next) {
+function getUserFollow (req, res, next) {
   common.userModel.getById(req.params.id, function (err, fUser) {
     if (err) {
       next(err);
