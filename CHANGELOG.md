@@ -2,7 +2,7 @@
 
 ## 0.11.2
 
-* Add state and tag filter on GET /v1/spredcast -> ?state=0&state=1&tags=tag_id&tags=tag2_id
+* Add state and tag filter on GET /v1/spredcast
 
 *guedjm, Sat Dec 17 2016 14:05:59 GMT+0100 (CET)*
 
