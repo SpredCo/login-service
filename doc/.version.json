@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.11.4",
+    "author": "guedjm",
+    "date": "Sat Dec 17 2016 18:36:17 GMT+0100 (CET)",
+    "changes": [
+      "Add route GET /v1/tags/:name"
+    ]
+  },
+  {
     "version": "0.11.3",
     "author": "guedjm",
     "date": "Sat Dec 17 2016 14:07:04 GMT+0100 (CET)",

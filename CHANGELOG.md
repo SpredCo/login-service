@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.4
+
+* Add route GET /v1/tags/:name
+
+*guedjm, Sat Dec 17 2016 18:36:17 GMT+0100 (CET)*
+
+---
 ## 0.11.3
 
 * Fix changelog
