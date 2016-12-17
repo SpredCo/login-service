@@ -9,15 +9,11 @@ function registerRoute (router) {
 }
 
 function getAvailableCast (req, res, next) {
-  common.spredCastModel.findAvailableCast(function (err, fCasts) {
+  common.spredCastModel.findAvailableCast(req.query, function (err, fCasts) {
     if (err) {
       next(err);
     } else {
-      var result = [];
-      fCasts.forEach(function (cast) {
-        result.push(cast.toObject({ print: true }));
-      });
-      httpHelper.sendReply(res, 200, result);
+      httpHelper.sendReply(res, 200, fCasts);
     }
   });
 }

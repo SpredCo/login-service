@@ -9,7 +9,7 @@ const loginSrv = supertest(url);
 
 var user;
 
-describe.only('Testing user creation (POST /v1/users)', function () {
+describe('Testing user creation (POST /v1/users)', function () {
   before(function (done) {
     common.clientModel.createFix(fixture.client.name, fixture.client.key, fixture.client.secret, function (err, cClient) {
       if (err) {

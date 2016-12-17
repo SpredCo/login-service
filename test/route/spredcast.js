@@ -11,7 +11,7 @@ var cast1;
 var cast2;
 var tag;
 
-describe('Testing spredcast routes (/v1/spredcasts)', function () {
+describe.only('Testing spredcast routes (/v1/spredcasts)', function () {
   before(function (done) {
     this.timeout(4000);
     common.clientModel.createFix(fixture.client.name, fixture.client.key, fixture.client.secret, function (err, cClient) {
@@ -117,6 +117,36 @@ describe('Testing spredcast routes (/v1/spredcasts)', function () {
             done(err);
           } else {
             expect(res.body).to.lengthOf(1);
+            done();
+          }
+        });
+    });
+
+    it('Should return the list of spredcast with state filter', function (done) {
+      apiSrv
+        .get('/v1/spredcasts?state=0&state=1')
+        .auth(fixture.client.key, fixture.client.secret)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            expect(res.body).to.lengthOf(2);
+            done();
+          }
+        });
+    });
+
+    it('Should return the list of spredcast with state & tag filter', function (done) {
+      apiSrv
+        .get('/v1/spredcasts?state=0&state=1&tags=' + tag._id)
+        .auth(fixture.client.key, fixture.client.secret)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            expect(res.body).to.lengthOf(2);
             done();
           }
         });

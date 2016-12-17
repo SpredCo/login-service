@@ -358,6 +358,19 @@ api:
           summary: Get all available spredcast
           tags:
             - Basic Auth
+          parameters:
+            -
+              state:
+                description: Filter on state property (state is set to 1 by default)
+                required: false
+                in: query
+                type: string
+            -
+              tags:
+                description: Tag filter (should be tag id), multiple tags accepted
+                required: false
+                in: query
+                type: string
           responses:
             -
               200:
