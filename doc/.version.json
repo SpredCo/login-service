@@ -1,5 +1,21 @@
 [
   {
+    "version": "0.11.3",
+    "author": "guedjm",
+    "date": "Sat Dec 17 2016 14:07:04 GMT+0100 (CET)",
+    "changes": [
+      "Fix changelog"
+    ]
+  },
+  {
+    "version": "0.11.2",
+    "author": "guedjm",
+    "date": "Sat Dec 17 2016 14:05:59 GMT+0100 (CET)",
+    "changes": [
+      "Add state and tag filter on GET /v1/spredcast"
+    ]
+  },
+  {
     "version": "0.11.1",
     "author": "guedjm",
     "date": "Fri Dec 16 2016 18:18:35 GMT+0100 (CET)",

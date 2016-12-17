@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.3
+
+* Fix changelog
+
+*guedjm, Sat Dec 17 2016 14:07:04 GMT+0100 (CET)*
+
+---
 ## 0.11.2
 
 * Add state and tag filter on GET /v1/spredcast
