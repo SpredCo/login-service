@@ -388,6 +388,19 @@ api:
                 description:  Tags
                 type: Tag array
     -
+      /v1/tags/{name}:
+        get:
+          summary: Get tag by name
+          tags:
+            - Basic Auth
+          responses:
+            -
+              200:
+                description: Tag information
+                type: Tag
+          errors:
+            - Tag not found
+    -
       /v1/spredcasts/{id}/token:
         post:
           summary: Get a cast token for the cast
