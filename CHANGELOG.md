@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.2
+
+* Add state and tag filter on GET /v1/spredcast -> ?state=0&state=1&tags=tag_id&tags=tag2_id
+
+*guedjm, Sat Dec 17 2016 14:05:59 GMT+0100 (CET)*
+
+---
 ## 0.11.1
 
 * Update route GET /v1/users/{id}/following -> /follow
