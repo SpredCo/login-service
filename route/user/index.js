@@ -96,11 +96,12 @@ function createFbUser (req, res, next) {
                     if (err) {
                       next(err);
                     } else {
+                      httpHelper.sendReply(res, 201, cUser);
                       indexUser(cUser, function (err) {
                         if (err) {
                           next(err);
                         } else {
-                          httpHelper.sendReply(res, 201, cUser);
+                          httpHelper.sendMail(req.body.email, 'welcome', {username: req.body.pseudo});
                         }
                       });
                     }
@@ -146,11 +147,12 @@ function createGoogleUser (req, res, next) {
                     if (err) {
                       next(err);
                     } else {
+                      httpHelper.sendReply(res, 201, cUser);
                       indexUser(cUser, function (err) {
                         if (err) {
                           next(err);
                         } else {
-                          httpHelper.sendReply(res, 201, cUser);
+                          httpHelper.sendMail(req.body.email, 'welcome', {username: req.body.pseudo});
                         }
                       });
                     }
