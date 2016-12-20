@@ -105,7 +105,7 @@ function createFbUser (req, res, next) {
                         if (err) {
                           next(err);
                         } else {
-                          httpHelper.sendMail(req.body.email, 'welcome', {username: req.body.pseudo}, function (err) {
+                          httpHelper.sendMail(userInfo.email, 'welcome', {username: req.body.pseudo}, function (err) {
                             if (err) {
                               next(err);
                             } else {
@@ -161,7 +161,7 @@ function createGoogleUser (req, res, next) {
                         if (err) {
                           next(err);
                         } else {
-                          httpHelper.sendMail(req.body.email, 'welcome', {username: req.body.pseudo}, function (err) {
+                          httpHelper.sendMail(info['email'], 'welcome', {username: req.body.pseudo}, function (err) {
                             if (err) {
                               next(err);
                             } else {
