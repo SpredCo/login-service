@@ -27,8 +27,8 @@
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "request": "^2.74.0",
-    "spred-common": "git+https://github.com/spredco/common.git",
-    "spred-http-helper": "git+https://git@github.com/spredco/http-helper.git"
+    "spred-common": "git+https://github.com/SpredCo/common.git",
+    "spred-http-helper": "git+https://git@github.com/SpredCo/http-helper.git"
   },
   "devDependencies": {
     "api-doc-generator": "git+https://github.com/guedjm/api-doc-generator.git",
