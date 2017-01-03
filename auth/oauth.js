@@ -50,7 +50,7 @@ server.exchange(oauth2orize.exchange.refreshToken(function (client, refreshToken
             if (err) {
               done(err);
             } else {
-              logger.info('Created new refresh token' + cRefreshToken.token);
+              logger.info('Created new refresh token' + cRefreshToken.tokengit s);
               logger.info(cRefreshToken);
               fRefreshToken.revoke(function (err) {
                 logger.info('Revoked old refresh token');
