@@ -42,8 +42,7 @@ server.exchange(oauth2orize.exchange.refreshToken(function (client, refreshToken
       done(null, false);
     } else {
       common.accessTokenModel.createNew(client, fRefreshToken.user, function (err, cAccessToken) {
-        logger.info('Created new access token');
-        logger.info(cAccessToken);
+        logger.info('Created new access token ' + cAccessToken.token);
         if (err) {
           done(err);
         } else {
@@ -51,7 +50,7 @@ server.exchange(oauth2orize.exchange.refreshToken(function (client, refreshToken
             if (err) {
               done(err);
             } else {
-              logger.info('Created new refresh token');
+              logger.info('Created new refresh token' + cRefreshToken.token);
               logger.info(cRefreshToken);
               fRefreshToken.revoke(function (err) {
                 logger.info('Revoked old refresh token');
