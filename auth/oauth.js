@@ -1,5 +1,6 @@
 const oauth2orize = require('oauth2orize');
 const common = require('spred-common');
+const logger = require('winston');
 
 var server = oauth2orize.createServer();
 
@@ -32,13 +33,17 @@ server.exchange(oauth2orize.exchange.password(function (client, email, password,
 }));
 
 server.exchange(oauth2orize.exchange.refreshToken(function (client, refreshToken, scope, done) {
+  logger.info('Got a refresh token request: ' + refreshToken);
   common.refreshTokenModel.getByClientToken(client, refreshToken, function (err, fRefreshToken) {
+    logger.info('Found token : ' + fRefreshToken);
     if (err) {
       done(err);
     } else if (fRefreshToken === null) {
       done(null, false);
     } else {
       common.accessTokenModel.createNew(client, fRefreshToken.user, function (err, cAccessToken) {
+        logger.info('Created new access token');
+        logger.info(cAccessToken);
         if (err) {
           done(err);
         } else {
@@ -46,7 +51,10 @@ server.exchange(oauth2orize.exchange.refreshToken(function (client, refreshToken
             if (err) {
               done(err);
             } else {
+              logger.info('Created new refresh token');
+              logger.info(cRefreshToken);
               fRefreshToken.revoke(function (err) {
+                logger.info('Revoked old refresh token');
                 if (err) {
                   done(err);
                 } else {
