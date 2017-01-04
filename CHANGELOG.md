@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.13.0
+
+* Add home feed
+
+*guedjm, Wed Jan 04 2017 17:17:09 GMT+0100 (CET)*
+
+---
 ## 0.12.0
 
 * Add feed trend route

@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.13.0",
+    "author": "guedjm",
+    "date": "Wed Jan 04 2017 17:17:09 GMT+0100 (CET)",
+    "changes": [
+      "Add home feed"
+    ]
+  },
+  {
     "version": "0.12.0",
     "author": "guedjm",
     "date": "Wed Jan 04 2017 02:36:21 GMT+0100 (CET)",
