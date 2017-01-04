@@ -10,6 +10,7 @@ const userRoute = require('./route/user/');
 const oauth2Route = require('./route/oauth2');
 const spredcastRoute = require('./route/spredcast');
 const tagsRoute = require('./route/tag');
+const feedRoute = require('./route/feed');
 
 var loginApp = null;
 var loginRouter = null;
@@ -35,6 +36,7 @@ function getApp (log, algoliaAddIndexFunc) {
   oauth2Route.registerRoute(loginRouter);
   spredcastRoute.registerRoute(loginRouter);
   tagsRoute.registerRoute(loginRouter);
+  feedRoute.registerRoute(loginRouter);
 
   loginApp.use('/v1', loginRouter);
   loginApp.use('/doc', express.static(path.join(__dirname, '/doc'), {dotfiles: 'allow'}));

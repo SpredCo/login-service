@@ -1,6 +1,5 @@
 const oauth2orize = require('oauth2orize');
 const common = require('spred-common');
-const logger = require('winston');
 
 var server = oauth2orize.createServer();
 

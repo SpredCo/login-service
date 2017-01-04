@@ -445,6 +445,15 @@ api:
                 type: spredcast array
           errors:
             - Tag not found
+    -
+      /v1/feed/trend:
+        get:
+          summary: Get trend feed
+          responses:
+            -
+              200:
+                description: Trend feed
+                type: spredcast array
 
 
   errors:
