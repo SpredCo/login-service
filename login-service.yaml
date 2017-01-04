@@ -446,6 +446,15 @@ api:
           errors:
             - Tag not found
     -
+      /v1/feed/home:
+        get:
+          summary: Get home feed
+          responses:
+            -
+              200:
+                description: Home feed
+                type: spredcast array
+    -
       /v1/feed/trend:
         get:
           summary: Get trend feed

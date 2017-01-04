@@ -131,7 +131,7 @@ describe('Testing spredcast routes (/v1/spredcasts)', function () {
           if (err) {
             done(err);
           } else {
-            expect(res.body).to.lengthOf(2);
+            expect(res.body).to.have.lengthOf(1);
             done();
           }
         });
@@ -146,7 +146,7 @@ describe('Testing spredcast routes (/v1/spredcasts)', function () {
           if (err) {
             done(err);
           } else {
-            expect(res.body).to.lengthOf(2);
+            expect(res.body).to.lengthOf(1);
             done();
           }
         });
@@ -210,6 +210,40 @@ describe('Testing spredcast routes (/v1/spredcasts)', function () {
           if (err) {
             done(err);
           } else {
+            done();
+          }
+        });
+    });
+  });
+
+  describe('Testing get trend feed (GET /v1/feed/trend)', function () {
+    it('Should get trend feed', function (done) {
+      apiSrv
+        .get('/v1/feed/trend')
+        .auth(fixture.client.key, fixture.client.secret)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            expect(res.body).to.have.lengthOf(1);
+            done();
+          }
+        });
+    });
+  });
+
+  describe('Testing get trend feed (GET /v1/feed/home)', function () {
+    it('Should get trend feed', function (done) {
+      apiSrv
+        .get('/v1/feed/home')
+        .auth(fixture.client.key, fixture.client.secret)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            expect(res.body).to.have.lengthOf(1);
             done();
           }
         });
