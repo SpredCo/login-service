@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0
+
+* Add feed trend route
+
+*guedjm, Wed Jan 04 2017 02:36:21 GMT+0100 (CET)*
+
+---
 ## 0.11.4
 
 * Add route GET /v1/tags/:name

@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.12.0",
+    "author": "guedjm",
+    "date": "Wed Jan 04 2017 02:36:21 GMT+0100 (CET)",
+    "changes": [
+      "Add feed trend route"
+    ]
+  },
+  {
     "version": "0.11.4",
     "author": "guedjm",
     "date": "Sat Dec 17 2016 18:36:17 GMT+0100 (CET)",
