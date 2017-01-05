@@ -5,7 +5,7 @@ const httpHelper = require('spred-http-helper');
 function getUserInformation (token, userId, cb) {
   var url = 'https://graph.facebook.com/v2.7/' + userId + '?' +
     queryString.stringify({
-      fields: 'first_name,last_name,email,id,picture',
+      fields: 'first_name,last_name,email,id,picture.height(100)',
       access_token: token
     });
 

@@ -152,7 +152,7 @@ function createGoogleUser (req, res, next) {
                   req.body.pseudo,
                   info['given_name'],
                   info['family_name'],
-                  info['picture'] + '?sz=50',
+                  info['picture'] + '?sz=100',
                   function (err, cUser) {
                     if (err) {
                       next(err);
