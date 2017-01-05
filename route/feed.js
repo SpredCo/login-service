@@ -7,7 +7,7 @@ function registerRoute (router) {
 }
 
 function getHomeFeed (req, res, next) {
-  common.spredCastModel.find({ $or: [{ date: { $gt: new Date() }, state: 0 }, { state: 1 }] }).populate('creator tags').sort('date').exec(function (err, fCasts) {
+  common.spredCastModel.find({ $or: [{ date: { $gt: new Date() }, state: 0 }, { state: 1 }], isPublic: true }).populate('creator tags').sort('date').exec(function (err, fCasts) {
     if (err) {
       next(err);
     } else {
